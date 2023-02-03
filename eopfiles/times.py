@@ -30,6 +30,27 @@ class TimeReferenceType(Enum):
 
 
 @dataclass
+class DeltaUT1Type:
+    class Meta:
+        name = "Delta_UT1_Type"
+
+    value: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="s",
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )
+
+
+@dataclass
 class SecondsTimeType:
     class Meta:
         name = "Seconds_Time_Type"
@@ -54,3 +75,24 @@ class SecondsTimeType:
 class SecondsDurationType(SecondsTimeType):
     class Meta:
         name = "Seconds_Duration_Type"
+
+
+@dataclass
+class RelTimeASCNodeType:
+    class Meta:
+        name = "Rel_Time_ASC_Node_Type"
+
+    value: str = field(
+        default="",
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="s",
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )

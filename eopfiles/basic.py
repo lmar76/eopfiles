@@ -27,6 +27,32 @@ FILE_VERSION_PATTERN = r"[0-9]{4}"
 
 
 # ===============================================
+# Data Volume
+# ===============================================
+
+
+@dataclass
+class TotSizeType:
+    class Meta:
+        name = "Tot_Size_Type"
+
+    value: Optional[int] = field(
+        default=None,
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="bytes",
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )
+
+
+# ===============================================
 # Contacts
 # ===============================================
 
@@ -92,6 +118,68 @@ class RightAsc(AngleType):
         name = "Right_Asc"
 
 
+@dataclass
+class LatType:
+    class Meta:
+        name = "Lat_Type"
+
+    value: Optional[int] = field(
+        default=None,
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="10-6deg",
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )
+
+
+@dataclass
+class LongType:
+    class Meta:
+        name = "Long_Type"
+
+    value: Optional[int] = field(
+        default=None,
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="10-6deg",
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )
+
+
+@dataclass
+class EquatorCrossLongType:
+    class Meta:
+        name = "Equator_Cross_Long_Type"
+
+    value: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="10-6deg",
+        metadata={
+            "type": "Attribute",
+        }
+    )
+
+
 # ===============================================
 # Lenght
 # ===============================================
@@ -122,6 +210,32 @@ class DistanceType:
 class HeightType(DistanceType):
     class Meta:
         name = "Height_Type"
+
+
+# ===============================================
+# Position
+# ===============================================
+
+
+@dataclass
+class PositionType:
+    class Meta:
+        name = "Position_Type"
+
+    value: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="m",
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )
 
 
 # ===============================================
@@ -182,6 +296,32 @@ class RefractionType:
             "name": "Freq",
             "type": "Element",
             "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+
+
+# ===============================================
+# Velocity
+# ===============================================
+
+
+@dataclass
+class VelocityType:
+    class Meta:
+        name = "Velocity_Type"
+
+    value: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "required": True,
+        }
+    )
+    unit: str = field(
+        init=False,
+        default="m/s",
+        metadata={
+            "type": "Attribute",
             "required": True,
         }
     )
