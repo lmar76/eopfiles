@@ -4,6 +4,8 @@ from enum import Enum
 from typing import List, Optional
 from xsdata.models.datatype import XmlTime
 
+from . import common
+
 
 __NAMESPACE__ = "http://eop-cfi.esa.int/CFI"
 
@@ -996,7 +998,7 @@ class FixedHeaderEOMType:
 
 
 @dataclass
-class FixedHeaderType:
+class FixedHeaderTypeFFS1:
     class Meta:
         name = "Fixed_Header_Type"
 
@@ -1007,7 +1009,99 @@ class FixedHeaderType:
             "type": "Element",
             "namespace": __NAMESPACE__,
             "required": True,
-            "pattern": r"([A-Z0-9_]){3}_([A-Z0-9_]){4}_([A-Z0-9_]){10}_([A-Z0-9_]){1,41}",
+            "pattern": common.FILE_NAME_PATTERN_FFS1,
+        }
+    )
+    file_description: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Description",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    notes: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "Notes",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    mission: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "Mission",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    file_class: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Class",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+            "pattern": r"OPER|OFFL|NRT_|RPRO|STV[0-3]|GSOV|TEST|TD[0-9][0-9]|Routine Operations|Off-Line Processing|near-real-Time Processing|Re-Processing|Satellite Validation Test [0-3]|Ground Segment Overall Validation test|Generated test files|Test Data Set [0-9][0-9]",
+        }
+    )
+    file_type: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Type",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+            "pattern": r"[A-Z0-9_]{10}",
+        }
+    )
+    validity_period: Optional[ValidityPeriodType] = field(
+        default=None,
+        metadata={
+            "name": "Validity_Period",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    file_version: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Version",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+            "pattern": r"[0-9]{4}",
+        }
+    )
+    source: Optional[SourceType] = field(
+        default=None,
+        metadata={
+            "name": "Source",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+
+
+@dataclass
+class FixedHeaderTypeFFS2:
+    class Meta:
+        name = "Fixed_Header_Type"
+
+    file_name: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Name",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+            "pattern": common.FILE_NAME_PATTERN_FFS2,
         }
     )
     file_description: Optional[str] = field(
@@ -1798,11 +1892,36 @@ class CycleType:
 
 
 @dataclass
-class EarthExplorerHeaderType:
+class EarthExplorerHeaderTypeFFS1:
     class Meta:
         name = "Earth_Explorer_Header_Type"
 
-    fixed_header: Optional[FixedHeaderType] = field(
+    fixed_header: Optional[FixedHeaderTypeFFS1] = field(
+        default=None,
+        metadata={
+            "name": "Fixed_Header",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    variable_header: Optional[AnyTypeType] = field(
+        default=None,
+        metadata={
+            "name": "Variable_Header",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+
+
+@dataclass
+class EarthExplorerHeaderTypeFFS2:
+    class Meta:
+        name = "Earth_Explorer_Header_Type"
+
+    fixed_header: Optional[FixedHeaderTypeFFS2] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",
@@ -1904,11 +2023,43 @@ class PointingDirectionType:
 
 
 @dataclass
-class RestitutedOrbitHeaderType:
+class RestitutedOrbitHeaderTypeFFS1:
     class Meta:
         name = "Restituted_Orbit_Header_Type"
 
-    fixed_header: Optional[FixedHeaderType] = field(
+    fixed_header: Optional[FixedHeaderTypeFFS1] = field(
+        default=None,
+        metadata={
+            "name": "Fixed_Header",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    variable_header: Optional[OrbitFileVariableHeader] = field(
+        default=None,
+        metadata={
+            "name": "Variable_Header",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    schema_version: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "name": "schemaVersion",
+            "type": "Attribute",
+        }
+    )
+
+
+@dataclass
+class RestitutedOrbitHeaderTypeFFS2:
+    class Meta:
+        name = "Restituted_Orbit_Header_Type"
+
+    fixed_header: Optional[FixedHeaderTypeFFS2] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",
@@ -1979,7 +2130,14 @@ class SPHType:
 
 
 @dataclass
-class EarthExplorerHeader(RestitutedOrbitHeaderType):
+class EarthExplorerHeaderFFS1(RestitutedOrbitHeaderTypeFFS1):
+    class Meta:
+        name = "Earth_Explorer_Header"
+        namespace = __NAMESPACE__
+
+
+@dataclass
+class EarthExplorerHeaderFFS2(RestitutedOrbitHeaderTypeFFS2):
     class Meta:
         name = "Earth_Explorer_Header"
         namespace = __NAMESPACE__
@@ -2119,11 +2277,11 @@ class ListofOrbitChangesType:
 
 
 @dataclass
-class RestitutedOrbitFileType:
+class RestitutedOrbitFileTypeFFS1:
     class Meta:
         name = "Restituted_Orbit_File_Type"
 
-    earth_explorer_header: Optional[RestitutedOrbitHeaderType] = field(
+    earth_explorer_header: Optional[RestitutedOrbitHeaderTypeFFS1] = field(
         default=None,
         metadata={
             "name": "Earth_Explorer_Header",
@@ -2152,7 +2310,47 @@ class RestitutedOrbitFileType:
 
 
 @dataclass
-class EarthExplorerFile(RestitutedOrbitFileType):
+class RestitutedOrbitFileTypeFFS2:
+    class Meta:
+        name = "Restituted_Orbit_File_Type"
+
+    earth_explorer_header: Optional[RestitutedOrbitHeaderTypeFFS2] = field(
+        default=None,
+        metadata={
+            "name": "Earth_Explorer_Header",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    data_block: Optional[RestitutedOrbitDataBlockType] = field(
+        default=None,
+        metadata={
+            "name": "Data_Block",
+            "type": "Element",
+            "namespace": __NAMESPACE__,
+            "required": True,
+        }
+    )
+    schema_version: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "name": "schemaVersion",
+            "type": "Attribute",
+            "required": True,
+        }
+    )
+
+
+@dataclass
+class EarthExplorerFileFFS1(RestitutedOrbitFileTypeFFS1):
+    class Meta:
+        name = "Earth_Explorer_File"
+        namespace = __NAMESPACE__
+
+
+@dataclass
+class EarthExplorerFileFFS2(RestitutedOrbitFileTypeFFS2):
     class Meta:
         name = "Earth_Explorer_File"
         namespace = __NAMESPACE__
