@@ -4,7 +4,7 @@ from enum import Enum
 from typing import List, Optional
 from xsdata.models.datatype import XmlTime
 
-from . import common
+from . import basic
 
 
 __NAMESPACE__ = "http://eop-cfi.esa.int/CFI"
@@ -27,21 +27,6 @@ class AngleType:
         metadata={
             "type": "Attribute",
             "required": True,
-        }
-    )
-
-
-@dataclass
-class AnyTypeType:
-    class Meta:
-        name = "AnyType_Type"
-
-    content: List[object] = field(
-        default_factory=list,
-        metadata={
-            "type": "Wildcard",
-            "namespace": "##any",
-            "mixed": True,
         }
     )
 
@@ -675,61 +660,6 @@ class TotSizeType:
 
 
 @dataclass
-class ValidityPeriodBOMEOMType:
-    class Meta:
-        name = "Validity_Period_BOM_EOM_Type"
-
-    validity_start: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Validity_Start",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "pattern": r"UTC=0000-00-00T00:00:00",
-        }
-    )
-    validity_stop: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Validity_Stop",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "pattern": r"UTC=9999-99-99T99:99:99",
-        }
-    )
-
-
-@dataclass
-class ValidityPeriodEOMType:
-    class Meta:
-        name = "Validity_Period_EOM_Type"
-
-    validity_start: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Validity_Start",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "length": 23,
-            "pattern": r"UTC=.*",
-        }
-    )
-    validity_stop: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Validity_Stop",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "pattern": r"UTC=9999-99-99T99:99:99",
-        }
-    )
-
-
-@dataclass
 class ValidityPeriodType:
     class Meta:
         name = "Validity_Period_Type"
@@ -818,186 +748,6 @@ class ElevationType(AngleType):
 
 
 @dataclass
-class FixedHeaderBOMEOMType:
-    class Meta:
-        name = "Fixed_Header_BOM_EOM_Type"
-
-    file_name: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Name",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    file_description: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Description",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    notes: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Notes",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    mission: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Mission",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    file_class: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Class",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "pattern": r"OPER|OFFL|NRT_|RPRO|STV[0-3]|GSOV|TEST|TD[0-9][0-9]|Routine Operations|Off-Line Processing|near-real-Time Processing|Re-Processing|Satellite Validation Test [0-3]|Ground Segment Overall Validation test|Generated test files|Test Data Set [0-9][0-9]",
-        }
-    )
-    file_type: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Type",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "pattern": r"[A-Z0-9_]{10}",
-        }
-    )
-    validity_period: Optional[ValidityPeriodBOMEOMType] = field(
-        default=None,
-        metadata={
-            "name": "Validity_Period",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    file_version: Optional[int] = field(
-        default=None,
-        metadata={
-            "name": "File_Version",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    source: Optional[SourceType] = field(
-        default=None,
-        metadata={
-            "name": "Source",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-
-
-@dataclass
-class FixedHeaderEOMType:
-    class Meta:
-        name = "Fixed_Header_EOM_Type"
-
-    file_name: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Name",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    file_description: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Description",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    notes: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Notes",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    mission: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "Mission",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    file_class: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Class",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "pattern": r"OPER|OFFL|NRT_|RPRO|STV[0-3]|GSOV|TEST|TD[0-9][0-9]|Routine Operations|Off-Line Processing|near-real-Time Processing|Re-Processing|Satellite Validation Test [0-3]|Ground Segment Overall Validation test|Generated test files|Test Data Set [0-9][0-9]",
-        }
-    )
-    file_type: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "File_Type",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-            "pattern": r"[A-Z0-9_]{10}",
-        }
-    )
-    validity_period: Optional[ValidityPeriodEOMType] = field(
-        default=None,
-        metadata={
-            "name": "Validity_Period",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    file_version: Optional[int] = field(
-        default=None,
-        metadata={
-            "name": "File_Version",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    source: Optional[SourceType] = field(
-        default=None,
-        metadata={
-            "name": "Source",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-
-
-@dataclass
 class FixedHeaderTypeFFS1:
     class Meta:
         name = "Fixed_Header_Type"
@@ -1009,7 +759,7 @@ class FixedHeaderTypeFFS1:
             "type": "Element",
             "namespace": __NAMESPACE__,
             "required": True,
-            "pattern": common.FILE_NAME_PATTERN_FFS1,
+            "pattern": basic.FILE_NAME_PATTERN_FFS1,
         }
     )
     file_description: Optional[str] = field(
@@ -1046,7 +796,7 @@ class FixedHeaderTypeFFS1:
             "type": "Element",
             "namespace": __NAMESPACE__,
             "required": True,
-            "pattern": r"OPER|OFFL|NRT_|RPRO|STV[0-3]|GSOV|TEST|TD[0-9][0-9]|Routine Operations|Off-Line Processing|near-real-Time Processing|Re-Processing|Satellite Validation Test [0-3]|Ground Segment Overall Validation test|Generated test files|Test Data Set [0-9][0-9]",
+            "pattern": basic.FILE_CLASS_PATTERN,
         }
     )
     file_type: Optional[str] = field(
@@ -1101,7 +851,7 @@ class FixedHeaderTypeFFS2:
             "type": "Element",
             "namespace": __NAMESPACE__,
             "required": True,
-            "pattern": common.FILE_NAME_PATTERN_FFS2,
+            "pattern": basic.FILE_NAME_PATTERN_FFS2,
         }
     )
     file_description: Optional[str] = field(
@@ -1905,7 +1655,7 @@ class EarthExplorerHeaderTypeFFS1:
             "required": True,
         }
     )
-    variable_header: Optional[AnyTypeType] = field(
+    variable_header: Optional[basic.AnyTypeType] = field(
         default=None,
         metadata={
             "name": "Variable_Header",
@@ -1930,7 +1680,7 @@ class EarthExplorerHeaderTypeFFS2:
             "required": True,
         }
     )
-    variable_header: Optional[AnyTypeType] = field(
+    variable_header: Optional[basic.AnyTypeType] = field(
         default=None,
         metadata={
             "name": "Variable_Header",
