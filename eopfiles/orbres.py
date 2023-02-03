@@ -28,35 +28,10 @@ class OrbitFileVariableHeaderTimeReference(Enum):
     UT1 = "UT1"
 
 
-class OrbitScenarioVariableHeaderTimeReference(Enum):
-    UT1 = "UT1"
-
-
 @dataclass
 class PositionComponentType:
     class Meta:
         name = "Position_Component_Type"
-
-    value: Optional[Decimal] = field(
-        default=None,
-        metadata={
-            "required": True,
-        }
-    )
-    unit: str = field(
-        init=False,
-        default="m",
-        metadata={
-            "type": "Attribute",
-            "required": True,
-        }
-    )
-
-
-@dataclass
-class PositionType:
-    class Meta:
-        name = "Position_Type"
 
     value: Optional[Decimal] = field(
         default=None,
@@ -152,27 +127,6 @@ class ValidityPeriodType:
 class VelocityComponentType:
     class Meta:
         name = "Velocity_Component_Type"
-
-    value: Optional[Decimal] = field(
-        default=None,
-        metadata={
-            "required": True,
-        }
-    )
-    unit: str = field(
-        init=False,
-        default="m/s",
-        metadata={
-            "type": "Attribute",
-            "required": True,
-        }
-    )
-
-
-@dataclass
-class VelocityType:
-    class Meta:
-        name = "Velocity_Type"
 
     value: Optional[Decimal] = field(
         default=None,
