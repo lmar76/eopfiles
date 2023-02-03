@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<Earth_Explorer_File xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://eop-cfi.esa.int/CFI http://eop-cfi.esa.int/CFI/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0105.XSD" schemaVersion="1.5" xmlns="http://eop-cfi.esa.int/CFI">
+  <Earth_Explorer_Header>
+    <Fixed_Header>
+      <File_Name>CS_TEST_AUX_ORBRES_20100616T175926_20100616T180826_0007</File_Name>
+      <File_Description>FOS Orbit File</File_Description>
+      <Notes>
+               WARNING: this is an example of file compliant with formats defined and supported
+                        within the Earth Observation Mission CFI Software.
+                        This file does not reflect the actual satellite orbit
+                        attitude or instrument configuration.
+                        This file shall not be used in production environments.
+      </Notes>
+      <Mission>CryoSat</Mission>
+      <File_Class>TEST</File_Class>
+      <File_Type>AUX_ORBRES</File_Type>
+      <Validity_Period>
+        <Validity_Start>UTC=2010-06-16T17:59:26</Validity_Start>
+        <Validity_Stop>UTC=2010-06-16T18:08:26</Validity_Stop>
+      </Validity_Period>
+      <File_Version>0007</File_Version>
+      <Source>
+        <System>System Identification as per Ground Segment File Format Standard (PE-TN-ESA-GS-0001)</System>
+        <Creator>Creator Identification as per Ground Segment File Format Standard (PE-TN-ESA-GS-0001)</Creator>
+        <Creator_Version>Creator Version Identification as per Ground Segment File Format Standard (PE-TN-ESA-GS-0001)</Creator_Version>
+        <Creation_Date>UTC=2015-10-27T08:10:58</Creation_Date>
+      </Source>
+    </Fixed_Header>
+    <Variable_Header>
+      <Ref_Frame>EARTH_FIXED</Ref_Frame>
+      <Time_Reference>UTC</Time_Reference>
+    </Variable_Header>
+  </Earth_Explorer_Header>
+  <Data_Block type="xml">
+    <List_of_OSVs count="19">
+      <OSV>
+        <TAI>TAI=2010-06-16T17:58:50.643064</TAI>
+        <UTC>UTC=2010-06-16T17:59:25.643064</UTC>
+        <UT1>UT1=2010-06-16T17:59:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4534847.647</X>
+        <Y unit="m">-5470953.175</Y>
+        <Z unit="m">+0433982.833</Z>
+        <VX unit="m/s">-1579.654851</VX>
+        <VY unit="m/s">+1895.497136</VY>
+        <VZ unit="m/s">+7223.414532</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T17:59:20.643064</TAI>
+        <UTC>UTC=2010-06-16T17:59:55.643064</UTC>
+        <UT1>UT1=2010-06-16T17:59:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4579855.054</X>
+        <Y unit="m">-5411287.683</Y>
+        <Z unit="m">+0650432.814</Z>
+        <VX unit="m/s">-1420.437374</VX>
+        <VY unit="m/s">+2081.764673</VY>
+        <VZ unit="m/s">+7205.373485</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T17:59:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:00:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:00:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4620052.072</X>
+        <Y unit="m">-5346074.912</Y>
+        <Z unit="m">+0866233.605</Z>
+        <VX unit="m/s">-1258.989514</VX>
+        <VY unit="m/s">+2265.285105</VY>
+        <VZ unit="m/s">+7180.138936</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:00:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:00:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:00:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4655374.385</X>
+        <Y unit="m">-5275400.181</Y>
+        <Z unit="m">+1081169.746</Z>
+        <VX unit="m/s">-1095.484941</VX>
+        <VY unit="m/s">+2445.865083</VY>
+        <VZ unit="m/s">+7147.735047</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:00:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:01:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:01:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4685762.932</X>
+        <Y unit="m">-5199354.558</Y>
+        <Z unit="m">+1295026.610</Z>
+        <VX unit="m/s">-0930.100276</VX>
+        <VY unit="m/s">+2623.314962</VY>
+        <VZ unit="m/s">+7108.193356</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:01:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:01:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:01:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4711163.994</X>
+        <Y unit="m">-5118034.738</Y>
+        <Z unit="m">+1507590.627</Z>
+        <VX unit="m/s">-0763.014880</VX>
+        <VY unit="m/s">+2797.449023</VY>
+        <VZ unit="m/s">+7061.552742</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:01:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:02:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:02:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4731529.266</X>
+        <Y unit="m">-5031542.928</Y>
+        <Z unit="m">+1718649.504</Z>
+        <VX unit="m/s">-0594.410648</VX>
+        <VY unit="m/s">+2968.085680</VY>
+        <VZ unit="m/s">+7007.859381</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:02:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:02:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:02:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4746815.940</X>
+        <Y unit="m">-4939986.716</Y>
+        <Z unit="m">+1927992.440</Z>
+        <VX unit="m/s">-0424.471792</VX>
+        <VY unit="m/s">+3135.047693</VY>
+        <VZ unit="m/s">+6947.166697</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:02:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:03:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:03:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4756986.763</X>
+        <Y unit="m">-4843478.942</Y>
+        <Z unit="m">+2135410.344</Z>
+        <VX unit="m/s">-0253.384625</VX>
+        <VY unit="m/s">+3298.162364</VY>
+        <VZ unit="m/s">+6879.535299</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:03:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:03:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:03:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4762010.101</X>
+        <Y unit="m">-4742137.552</Y>
+        <Z unit="m">+2340696.053</Z>
+        <VX unit="m/s">-0081.337341</VX>
+        <VY unit="m/s">+3457.261730</VY>
+        <VZ unit="m/s">+6805.032910</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:03:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:04:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:04:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4761859.990</X>
+        <Y unit="m">-4636085.462</Y>
+        <Z unit="m">+2543644.538</Z>
+        <VX unit="m/s">+0091.480210</VX>
+        <VY unit="m/s">+3612.182750</VY>
+        <VZ unit="m/s">+6723.734288</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:04:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:04:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:04:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4756516.187</X>
+        <Y unit="m">-4525450.401</Y>
+        <Z unit="m">+2744053.119</Z>
+        <VX unit="m/s">+0264.876744</VX>
+        <VY unit="m/s">+3762.767487</VY>
+        <VZ unit="m/s">+6635.721143</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:04:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:05:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:05:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4745964.201</X>
+        <Y unit="m">-4410364.756</Y>
+        <Z unit="m">+2941721.669</Z>
+        <VX unit="m/s">+0438.659770</VX>
+        <VY unit="m/s">+3908.863273</VY>
+        <VZ unit="m/s">+6541.082034</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:05:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:05:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:05:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4730195.335</X>
+        <Y unit="m">-4290965.417</Y>
+        <Z unit="m">+3136452.820</Z>
+        <VX unit="m/s">+0612.635816</VX>
+        <VY unit="m/s">+4050.322880</VY>
+        <VZ unit="m/s">+6439.912270</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:05:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:06:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:06:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4709206.707</X>
+        <Y unit="m">-4167393.605</Y>
+        <Z unit="m">+3328052.162</Z>
+        <VX unit="m/s">+0786.610660</VX>
+        <VY unit="m/s">+4187.004667</VY>
+        <VZ unit="m/s">+6332.313797</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:06:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:06:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:06:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4683001.269</X>
+        <Y unit="m">-4039794.704</Y>
+        <Z unit="m">+3516328.442</Z>
+        <VX unit="m/s">+0960.389557</VX>
+        <VY unit="m/s">+4318.772735</VY>
+        <VZ unit="m/s">+6218.395080</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:06:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:07:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:07:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4651587.822</X>
+        <Y unit="m">-3908318.090</Y>
+        <Z unit="m">+3701093.758</Z>
+        <VX unit="m/s">+1133.777465</VX>
+        <VY unit="m/s">+4445.497061</VY>
+        <VZ unit="m/s">+6098.270975</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:07:20.643064</TAI>
+        <UTC>UTC=2010-06-16T18:07:55.643064</UTC>
+        <UT1>UT1=2010-06-16T18:07:55.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4614981.021</X>
+        <Y unit="m">-3773116.948</Y>
+        <Z unit="m">+3882163.747</Z>
+        <VX unit="m/s">+1306.579278</VX>
+        <VY unit="m/s">+4567.053632</VY>
+        <VZ unit="m/s">+5972.062598</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+      <OSV>
+        <TAI>TAI=2010-06-16T18:07:50.643064</TAI>
+        <UTC>UTC=2010-06-16T18:08:25.643064</UTC>
+        <UT1>UT1=2010-06-16T18:08:25.943063</UT1>
+        <Absolute_Orbit>+00000</Absolute_Orbit>
+        <X unit="m">-4573201.370</X>
+        <Y unit="m">-3634348.093</Y>
+        <Z unit="m">+4059357.772</Z>
+        <VX unit="m/s">+1478.600052</VX>
+        <VY unit="m/s">+4683.324562</VY>
+        <VZ unit="m/s">+5839.897182</VZ>
+        <Quality>0000000000000</Quality>
+      </OSV>
+    </List_of_OSVs>
+  </Data_Block>
+</Earth_Explorer_File>
