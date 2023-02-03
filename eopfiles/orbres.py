@@ -1271,7 +1271,7 @@ class OSVType:
             "type": "Element",
             "namespace": __NAMESPACE__,
             "required": True,
-            "pattern": r"TAI=.*",
+            "pattern": basic.TAI_DATE_TIME_PATTERN,
         }
     )
     utc: Optional[str] = field(
@@ -1281,7 +1281,7 @@ class OSVType:
             "type": "Element",
             "namespace": __NAMESPACE__,
             "required": True,
-            "pattern": r"UTC=.*",
+            "pattern": basic.UTC_DATE_TIME_PATTERN,
         }
     )
     ut1: Optional[str] = field(
@@ -1291,7 +1291,7 @@ class OSVType:
             "type": "Element",
             "namespace": __NAMESPACE__,
             "required": True,
-            "pattern": r"UT1=.*",
+            "pattern": basic.UT1_DATE_TIME_PATTERN,
         }
     )
     absolute_orbit: Optional[int] = field(

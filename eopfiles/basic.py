@@ -14,6 +14,10 @@ FILE_CLASS_PATTERN = (
     r"|Generated test files|Test Data Set [0-9][0-9]"
 )
 
+TAI_DATE_TIME_PATTERN = r"TAI=.*"
+UTC_DATE_TIME_PATTERN = r"UTC=.*"
+UT1_DATE_TIME_PATTERN = r"UT1=.*"
+
 
 @dataclass
 class AnyTypeType:
