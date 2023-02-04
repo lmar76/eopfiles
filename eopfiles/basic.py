@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from decimal import Decimal
-from enum import Enum
 from typing import Any, Optional
 
 
@@ -108,17 +107,6 @@ class AngleType:
 
 
 @dataclass
-class Declination(AngleType):
-    pass
-
-
-@dataclass
-class RightAsc(AngleType):
-    class Meta:
-        name = "Right_Asc"
-
-
-@dataclass
 class LatType:
     class Meta:
         name = "Lat_Type"
@@ -181,46 +169,14 @@ class EquatorCrossLongType:
 
 
 # ===============================================
-# Lenght
-# ===============================================
-
-
-@dataclass
-class DistanceType:
-    class Meta:
-        name = "Distance_Type"
-
-    value: Optional[Decimal] = field(
-        default=None,
-        metadata={
-            "required": True,
-        }
-    )
-    unit: str = field(
-        init=False,
-        default="m",
-        metadata={
-            "type": "Attribute",
-            "required": True,
-        }
-    )
-
-
-@dataclass
-class HeightType(DistanceType):
-    class Meta:
-        name = "Height_Type"
-
-
-# ===============================================
 # Position
 # ===============================================
 
 
 @dataclass
-class PositionType:
+class PositionComponentType:
     class Meta:
-        name = "Position_Type"
+        name = "Position_Component_Type"
 
     value: Optional[Decimal] = field(
         default=None,
@@ -233,69 +189,6 @@ class PositionType:
         default="m",
         metadata={
             "type": "Attribute",
-            "required": True,
-        }
-    )
-
-
-# ===============================================
-# Frequency
-# ===============================================
-
-
-@dataclass
-class FreqType:
-    class Meta:
-        name = "Freq_Type"
-
-    value: Optional[Decimal] = field(
-        default=None,
-        metadata={
-            "required": True,
-        }
-    )
-    unit: str = field(
-        init=False,
-        default="MHz",
-        metadata={
-            "type": "Attribute",
-            "required": True,
-        }
-    )
-
-
-# ===============================================
-# Refraction
-# ===============================================
-
-
-class RefractionModelType(Enum):
-    NO_REF = "NO_REF"
-    STD_REF = "STD_REF"
-    USER_REF = "USER_REF"
-    PRED_REF = "PRED_REF"
-
-
-@dataclass
-class RefractionType:
-    class Meta:
-        name = "Refraction_Type"
-
-    model: Optional[RefractionModelType] = field(
-        default=None,
-        metadata={
-            "name": "Model",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
-            "required": True,
-        }
-    )
-    freq: Optional[FreqType] = field(
-        default=None,
-        metadata={
-            "name": "Freq",
-            "type": "Element",
-            "namespace": __NAMESPACE__,
             "required": True,
         }
     )
@@ -307,9 +200,9 @@ class RefractionType:
 
 
 @dataclass
-class VelocityType:
+class VelocityComponentType:
     class Meta:
-        name = "Velocity_Type"
+        name = "Velocity_Component_Type"
 
     value: Optional[Decimal] = field(
         default=None,

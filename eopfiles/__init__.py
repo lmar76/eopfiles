@@ -1,3 +1,13 @@
-from . import orbres1, orbres2, orbres3
+from . import (
+    basic,
+    headers,
+    orbres,
+    times
+)
 
-__all__ = ["common", "orbres", "orbres1", "orbres2", "orbres3"]
+__all__ = [
+    "basic",
+    "headers",
+    "orbres",
+    "times"
+]
