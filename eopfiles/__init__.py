@@ -11,3 +11,5 @@ __all__ = [
     "orbres",
     "times"
 ]
+
+__version__ = "0.1"
