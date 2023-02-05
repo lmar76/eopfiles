@@ -173,7 +173,7 @@ class EERestitutedOrbitFileFFS1:
         }
     )
 
-    earth_explorer_header: Optional[EERestitutedOrbitHeaderTypeFFS1] = field(
+    header: Optional[EERestitutedOrbitHeaderTypeFFS1] = field(
         default=None,
         metadata={
             "name": "Earth_Explorer_Header",
@@ -217,7 +217,7 @@ class EERestitutedOrbitFile:
         }
     )
 
-    earth_explorer_header: Optional[EERestitutedOrbitHeaderType] = field(
+    header: Optional[EERestitutedOrbitHeaderType] = field(
         default=None,
         metadata={
             "name": "Earth_Explorer_Header",
@@ -261,10 +261,10 @@ class EORestitutedOrbitFile:
         }
     )
 
-    earth_explorer_header: Optional[EORestitutedOrbitHeaderType] = field(
+    header: Optional[EORestitutedOrbitHeaderType] = field(
         default=None,
         metadata={
-            "name": "Earth_Explorer_Header",
+            "name": "Earth_Observation_Header",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
