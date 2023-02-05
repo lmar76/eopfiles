@@ -66,6 +66,38 @@ class RestitutedOrbitFileDataBlockType:
 
 
 @dataclass
+class EERestitutedOrbitHeaderTypeFFS1:
+    class Meta:
+        name = "Earth_Explorer_Header"
+
+    fixed_header: Optional[headers.EEFixedHeaderTypeFFS1] = field(
+        default=None,
+        metadata={
+            "name": "Fixed_Header",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    variable_header: Optional[RestitutedOrbitFileVariableHeader] = field(
+        default=None,
+        metadata={
+            "name": "Variable_Header",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    schema_version: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "name": "schemaVersion",
+            "type": "Attribute",
+        }
+    )
+
+
+@dataclass
 class EERestitutedOrbitHeaderType:
     class Meta:
         name = "Earth_Explorer_Header"
@@ -125,6 +157,39 @@ class EORestitutedOrbitHeaderType:
         metadata={
             "name": "schemaVersion",
             "type": "Attribute",
+        }
+    )
+
+
+@dataclass
+class EERestitutedOrbitFileFFS1:
+    class Meta:
+        name = "Earth_Explorer_File"
+
+    earth_explorer_header: Optional[EERestitutedOrbitHeaderTypeFFS1] = field(
+        default=None,
+        metadata={
+            "name": "Earth_Explorer_Header",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    data_block: Optional[RestitutedOrbitFileDataBlockType] = field(
+        default=None,
+        metadata={
+            "name": "Data_Block",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    schema_version: Optional[Decimal] = field(
+        default=None,
+        metadata={
+            "name": "schemaVersion",
+            "type": "Attribute",
+            "required": True,
         }
     )
 

@@ -80,6 +80,98 @@ class Source:
 
 
 @dataclass
+class EEFixedHeaderTypeFFS1:
+    class Meta:
+        name = "Fixed_Header"
+
+    file_name: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Name",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+            "pattern": basic.FILE_NAME_PATTERN_FFS1,
+        }
+    )
+    file_description: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Description",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    notes: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "Notes",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    mission: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "Mission",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    file_class: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Class",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+            "pattern": basic.FILE_CLASS_PATTERN,
+        }
+    )
+    file_type: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Type",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+            "pattern": basic.FILE_TYPE_PATTERN,
+        }
+    )
+    validity_period: Optional[ValidityPeriod] = field(
+        default=None,
+        metadata={
+            "name": "Validity_Period",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+    file_version: Optional[str] = field(
+        default=None,
+        metadata={
+            "name": "File_Version",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+            "pattern": basic.FILE_VERSION_PATTERN,
+        }
+    )
+    source: Optional[Source] = field(
+        default=None,
+        metadata={
+            "name": "Source",
+            "type": "Element",
+            "namespace": basic.__NAMESPACE__,
+            "required": True,
+        }
+    )
+
+
+@dataclass
 class EEFixedHeaderType:
     class Meta:
         name = "Fixed_Header"
