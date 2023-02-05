@@ -5,10 +5,6 @@ from typing import Optional
 from . import basic, headers, orbits
 
 
-SCHEMA_URL = f"{basic.__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0203.XSD"
-SCHEMA_LOCATION = f"{basic.__NAMESPACE__} {SCHEMA_URL}"
-
-
 @dataclass
 class RestitutedOrbitFileVariableHeader:
     class Meta:
@@ -165,6 +161,17 @@ class EORestitutedOrbitHeaderType:
 class EERestitutedOrbitFileFFS1:
     class Meta:
         name = "Earth_Explorer_File"
+        namespace = basic.__NAMESPACE__
+
+    schema_location: Optional[str] = field(
+        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['orbres_ffs1']}",
+        metadata={
+            'name': 'schemaLocation',
+            'type': 'Attribute',
+            'namespace': 'http://www.w3.org/2001/XMLSchema-instance',
+            'init': False
+        }
+    )
 
     earth_explorer_header: Optional[EERestitutedOrbitHeaderTypeFFS1] = field(
         default=None,
@@ -198,6 +205,17 @@ class EERestitutedOrbitFileFFS1:
 class EERestitutedOrbitFile:
     class Meta:
         name = "Earth_Explorer_File"
+        namespace = basic.__NAMESPACE__
+
+    schema_location: Optional[str] = field(
+        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['orbres_ffs2']}",
+        metadata={
+            'name': 'schemaLocation',
+            'type': 'Attribute',
+            'namespace': 'http://www.w3.org/2001/XMLSchema-instance',
+            'init': False
+        }
+    )
 
     earth_explorer_header: Optional[EERestitutedOrbitHeaderType] = field(
         default=None,
@@ -231,6 +249,17 @@ class EERestitutedOrbitFile:
 class EORestitutedOrbitFile:
     class Meta:
         name = "Earth_Observation_File"
+        namespace = basic.__NAMESPACE__
+
+    schema_location: Optional[str] = field(
+        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['orbres_ffs3']}",
+        metadata={
+            'name': 'schemaLocation',
+            'type': 'Attribute',
+            'namespace': 'http://www.w3.org/2001/XMLSchema-instance',
+            'init': False
+        }
+    )
 
     earth_explorer_header: Optional[EORestitutedOrbitHeaderType] = field(
         default=None,
