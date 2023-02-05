@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from decimal import Decimal
-from enum import Enum
 from typing import Optional
 
 from . import basic, headers, orbits
@@ -10,31 +9,12 @@ SCHEMA_URL = f"{basic.__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0203.XSD"
 SCHEMA_LOCATION = f"{basic.__NAMESPACE__} {SCHEMA_URL}"
 
 
-class RefFrame(Enum):
-    BAR_MEAN_2000 = "BAR_MEAN_2000"
-    HEL_MEAN_2000 = "HEL_MEAN_2000"
-    GEO_MEAN_2000 = "GEO_MEAN_2000"
-    MEAN_DATE = "MEAN_DATE"
-    TRUE_DATE = "TRUE_DATE"
-    EARTH_FIXED = "EARTH_FIXED"
-    BAR_MEAN_1950 = "BAR_MEAN_1950"
-    QUASI_MEAN_DATE = "QUASI_MEAN_DATE"
-    PSE_TRUE_DATE = "PSE_TRUE_DATE"
-    PSEUDO_EARTH_FIXED = "PSEUDO_EARTH_FIXED"
-
-
-class TimeReference(Enum):
-    TAI = "TAI"
-    UTC = "UTC"
-    UT1 = "UT1"
-
-
 @dataclass
 class RestitutedOrbitFileVariableHeader:
     class Meta:
         name = "Variable_Header"
 
-    ref_frame: Optional[RefFrame] = field(
+    ref_frame: Optional[orbits.RefFrame] = field(
         default=None,
         metadata={
             "name": "Ref_Frame",
@@ -43,7 +23,7 @@ class RestitutedOrbitFileVariableHeader:
             "required": True,
         }
     )
-    time_reference: Optional[TimeReference] = field(
+    time_reference: Optional[orbits.TimeReference] = field(
         default=None,
         metadata={
             "name": "Time_Reference",
