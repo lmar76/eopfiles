@@ -1,13 +1,10 @@
 """Test the `eopfiles.orbits` module."""
 import re
 from dataclasses import fields
-from decimal import Decimal
 
 import pytest
 from xsdata.formats.dataclass.context import XmlContext
 from xsdata.formats.dataclass.parsers import XmlParser
-from xsdata.formats.dataclass.serializers import XmlSerializer
-from xsdata.formats.dataclass.serializers.config import SerializerConfig
 
 from eopfiles import basic, orbits
 
@@ -23,12 +20,12 @@ class TestOSV:
                 "utc": "UTC=2014-06-11T10:51:15.855382",
                 "ut1": "UT1=2014-06-11T10:51:16.155381",
                 "absolute_orbit": 0,
-                "x": basic.PositionComponentType(Decimal(-2025630.454)),
-                "y": basic.PositionComponentType(Decimal(6765565.948)),
-                "z": basic.PositionComponentType(Decimal(0445518.75)),
-                "vx": basic.VelocityComponentType(Decimal(1655.255131)),
-                "vy": basic.VelocityComponentType(Decimal(-2.394418)),
-                "vz": basic.VelocityComponentType(Decimal(7415.236254)),
+                "x": basic.PositionComponentType.from_float(-2025630.454),
+                "y": basic.PositionComponentType.from_float(6765565.948),
+                "z": basic.PositionComponentType.from_float(0445518.75),
+                "vx": basic.VelocityComponentType.from_float(1655.255131),
+                "vy": basic.VelocityComponentType.from_float(-2.394418),
+                "vz": basic.VelocityComponentType.from_float(7415.236254),
                 "quality": "0000000000000"
             }
         ]
@@ -81,12 +78,12 @@ class TestOSV:
                     utc="UTC=2014-06-11T10:51:15.855382",
                     ut1="UT1=2014-06-11T10:51:16.155381",
                     absolute_orbit=0,
-                    x=basic.PositionComponentType(Decimal(-2025630.454)),
-                    y=basic.PositionComponentType(Decimal(6765565.948)),
-                    z=basic.PositionComponentType(Decimal(0445518.75)),
-                    vx=basic.VelocityComponentType(Decimal(1655.255131)),
-                    vy=basic.VelocityComponentType(Decimal(-2.394418)),
-                    vz=basic.VelocityComponentType(Decimal(7415.236254)),
+                    x=basic.PositionComponentType.from_float(-2025630.454),
+                    y=basic.PositionComponentType.from_float(6765565.948),
+                    z=basic.PositionComponentType.from_float(0445518.75),
+                    vx=basic.VelocityComponentType.from_float(1655.255131),
+                    vy=basic.VelocityComponentType.from_float(-2.394418),
+                    vz=basic.VelocityComponentType.from_float(7415.236254),
                     quality="0000000000000"
                 )
             )
@@ -132,12 +129,12 @@ class TestListOfOSVs:
                         utc="UTC=2014-06-11T10:51:15.855382",
                         ut1="UT1=2014-06-11T10:51:16.155381",
                         absolute_orbit=0,
-                        x=basic.PositionComponentType(Decimal(-2025630.454)),
-                        y=basic.PositionComponentType(Decimal(6765565.948)),
-                        z=basic.PositionComponentType(Decimal(0445518.75)),
-                        vx=basic.VelocityComponentType(Decimal(1655.255131)),
-                        vy=basic.VelocityComponentType(Decimal(-2.394418)),
-                        vz=basic.VelocityComponentType(Decimal(7415.236254)),
+                        x=basic.PositionComponentType.from_float(-2025630.454),
+                        y=basic.PositionComponentType.from_float(6765565.948),
+                        z=basic.PositionComponentType.from_float(0445518.75),
+                        vx=basic.VelocityComponentType.from_float(1655.255131),
+                        vy=basic.VelocityComponentType.from_float(-2.394418),
+                        vz=basic.VelocityComponentType.from_float(7415.236254),
                         quality="0000000000000"
                     )
                 ],
@@ -183,12 +180,12 @@ class TestListOfOSVs:
                             utc="UTC=2014-06-11T10:51:15.855382",
                             ut1="UT1=2014-06-11T10:51:16.155381",
                             absolute_orbit=0,
-                            x=basic.PositionComponentType(Decimal(-2025630.454)),
-                            y=basic.PositionComponentType(Decimal(6765565.948)),
-                            z=basic.PositionComponentType(Decimal(0445518.75)),
-                            vx=basic.VelocityComponentType(Decimal(1655.255131)),
-                            vy=basic.VelocityComponentType(Decimal(-2.394418)),
-                            vz=basic.VelocityComponentType(Decimal(7415.236254)),
+                            x=basic.PositionComponentType.from_float(-2025630.454),
+                            y=basic.PositionComponentType.from_float(6765565.948),
+                            z=basic.PositionComponentType.from_float(0445518.75),
+                            vx=basic.VelocityComponentType.from_float(1655.255131),
+                            vy=basic.VelocityComponentType.from_float(-2.394418),
+                            vz=basic.VelocityComponentType.from_float(7415.236254),
                             quality="0000000000000"
                         )
                     ],

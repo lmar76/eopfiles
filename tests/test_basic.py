@@ -12,7 +12,7 @@ class TestPositionComponentType:
 
     @pytest.mark.parametrize(
         "value",
-        [Decimal(10), Decimal(10.5)]
+        ["-1606749.988", "-4135675.595"]
     )
     def test_creation(self, value):
         """Test instance creation."""
@@ -21,7 +21,20 @@ class TestPositionComponentType:
         assert [f.name for f in fs] == ["value", "unit"]
         assert isinstance(obj, basic.PositionComponentType)
         assert obj.value == value
+        assert obj.to_float() == float(value)
         assert obj.unit == next(f for f in fs if f.name == "unit").default
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        [
+            (34.4567, "+0000034.457")
+        ]
+    )
+    def test_from_float(self, value, expected):
+        """Test the `PositionComponentType.from_float` class method."""
+        obj = basic.PositionComponentType.from_float(value)
+        assert isinstance(obj, basic.PositionComponentType)
+        assert obj.value == expected
 
 
 class TestVelocityComponentType:
@@ -29,7 +42,7 @@ class TestVelocityComponentType:
 
     @pytest.mark.parametrize(
         "value",
-        [Decimal(10), Decimal(10.5)]
+        ["-2876.652288", "+5985.303441"]
     )
     def test_creation(self, value):
         """Test instance creation."""
@@ -38,4 +51,17 @@ class TestVelocityComponentType:
         assert [f.name for f in fs] == ["value", "unit"]
         assert isinstance(obj, basic.VelocityComponentType)
         assert obj.value == value
+        assert obj.to_float() == float(value)
         assert obj.unit == next(f for f in fs if f.name == "unit").default
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        [
+            (34.45678999, "+0034.456790")
+        ]
+    )
+    def test_from_float(self, value, expected):
+        """Test the `VelocityComponentType.from_float` class method."""
+        obj = basic.VelocityComponentType.from_float(value)
+        assert isinstance(obj, basic.VelocityComponentType)
+        assert obj.value == expected

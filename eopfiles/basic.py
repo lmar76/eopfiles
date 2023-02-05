@@ -179,10 +179,11 @@ class PositionComponentType:
     class Meta:
         name = "Position_Component_Type"
 
-    value: Optional[Decimal] = field(
+    value: Optional[str] = field(
         default=None,
         metadata={
             "required": True,
+            "pattern": r"[+-]\d{7}\.\d{3}"
         }
     )
     unit: str = field(
@@ -193,6 +194,13 @@ class PositionComponentType:
             "required": True,
         }
     )
+
+    @classmethod
+    def from_float(cls, value) -> "PositionComponentType":
+        return cls(f"{value:+012.3f}")
+
+    def to_float(self) -> float:
+        return float(self.value)
 
 
 # ===============================================
@@ -205,10 +213,11 @@ class VelocityComponentType:
     class Meta:
         name = "Velocity_Component_Type"
 
-    value: Optional[Decimal] = field(
+    value: Optional[str] = field(
         default=None,
         metadata={
             "required": True,
+            "pattern": r"[+-]\d{7}\.\d{6}"
         }
     )
     unit: str = field(
@@ -219,3 +228,10 @@ class VelocityComponentType:
             "required": True,
         }
     )
+
+    @classmethod
+    def from_float(cls, value) -> "VelocityComponentType":
+        return cls(f"{value:+012.6f}")
+
+    def to_float(self) -> float:
+        return float(self.value)
