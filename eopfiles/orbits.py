@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Optional
 
-from . import basic
+from . import basic, times
 
 
 class RefFrame(Enum):
@@ -37,7 +37,7 @@ class OSV:
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
-            "pattern": basic.TAI_DATE_TIME_PATTERN,
+            "pattern": times.TAI_DATE_TIME_PATTERN,
         }
     )
     utc: Optional[str] = field(
@@ -47,7 +47,7 @@ class OSV:
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
-            "pattern": basic.UTC_DATE_TIME_PATTERN,
+            "pattern": times.UTC_DATE_TIME_PATTERN,
         }
     )
     ut1: Optional[str] = field(
@@ -57,7 +57,7 @@ class OSV:
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
-            "pattern": basic.UT1_DATE_TIME_PATTERN,
+            "pattern": times.UT1_DATE_TIME_PATTERN,
         }
     )
     absolute_orbit: Optional[int] = field(
@@ -124,12 +124,13 @@ class OSV:
         }
     )
     quality: Optional[str] = field(
-        default=None,
+        default="0000000000000",
         metadata={
             "name": "Quality",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
+            "pattern": r"0{13}"
         }
     )
 
@@ -139,7 +140,7 @@ class ListOfOSVs:
     class Meta:
         name = "List_of_OSVs"
 
-    osv: list[OSV] = field(
+    osvs: list[OSV] = field(
         default_factory=list,
         metadata={
             "name": "OSV",

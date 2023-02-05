@@ -137,3 +137,6 @@ dmypy.json
 
 # Jupyter Notebooks
 *.ipynb
+
+# Samples
+tests/samples/
