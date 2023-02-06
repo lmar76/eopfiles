@@ -11,9 +11,12 @@ from typing import Any, Optional
 
 __NAMESPACE__ = "http://eop-cfi.esa.int/CFI"
 SCHEMA_URLS = {
-    "orbres_ffs1": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0105.XSD",
-    "orbres_ffs2": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0203.XSD",
-    "orbres_ffs3": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0300.XSD"
+    "aux_orbres_ffs1": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0105.XSD",
+    "aux_orbres_ffs2": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0203.XSD",
+    "aux_orbres_ffs3": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0300.XSD",
+    "mpl_orbpre_ffs1": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_MPL_ORBPRE_0105.XSD",
+    "mpl_orbpre_ffs2": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_MPL_ORBPRE_0203.XSD",
+    "mpl_orbpre_ffs3": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_MPL_ORBPRE_0300.XSD"
 }
 
 
