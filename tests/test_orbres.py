@@ -5,7 +5,7 @@ from xsdata.formats.dataclass.parsers import XmlParser
 from xsdata.formats.dataclass.serializers import XmlSerializer
 from xsdata.formats.dataclass.serializers.config import SerializerConfig
 
-from eopfiles import basic, orbres
+from eopfiles import basic, aux_orbres
 
 
 class TestEERestitutedOrbitFile:
@@ -33,14 +33,14 @@ class TestEERestitutedOrbitFile:
         file = datadir / filename
         parser = XmlParser(context=XmlContext())
         if ffs == "FFS1":
-            restituted_orbit_file = parser.parse(file, orbres.EERestitutedOrbitFileFFS1)
-            assert isinstance(restituted_orbit_file, orbres.EERestitutedOrbitFileFFS1)
+            restituted_orbit_file = parser.parse(file, aux_orbres.EERestitutedOrbitFileFFS1)
+            assert isinstance(restituted_orbit_file, aux_orbres.EERestitutedOrbitFileFFS1)
         elif ffs == "FFS2":
-            restituted_orbit_file = parser.parse(file, orbres.EERestitutedOrbitFile)
-            assert isinstance(restituted_orbit_file, orbres.EERestitutedOrbitFile)
+            restituted_orbit_file = parser.parse(file, aux_orbres.EERestitutedOrbitFile)
+            assert isinstance(restituted_orbit_file, aux_orbres.EERestitutedOrbitFile)
         else:
-            restituted_orbit_file = parser.parse(file, orbres.EORestitutedOrbitFile)
-            assert isinstance(restituted_orbit_file, orbres.EORestitutedOrbitFile)
+            restituted_orbit_file = parser.parse(file, aux_orbres.EORestitutedOrbitFile)
+            assert isinstance(restituted_orbit_file, aux_orbres.EORestitutedOrbitFile)
         serializer = XmlSerializer(config=SerializerConfig(pretty_print=True))
         nsmap = {None: basic.__NAMESPACE__}
         samplesdir.write(serializer.render(restituted_orbit_file, nsmap), filename)
