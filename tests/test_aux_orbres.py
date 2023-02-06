@@ -1,4 +1,4 @@
-"""Test the `eopfiles.orbres` module."""
+"""Test the `eopfiles.aux_orbres` module."""
 import pytest
 from xsdata.formats.dataclass.context import XmlContext
 from xsdata.formats.dataclass.parsers import XmlParser

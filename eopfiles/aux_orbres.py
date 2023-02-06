@@ -164,7 +164,7 @@ class EERestitutedOrbitFileFFS1:
         namespace = basic.__NAMESPACE__
 
     schema_location: Optional[str] = field(
-        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['orbres_ffs1']}",
+        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['aux_orbres_ffs1']}",
         metadata={
             'name': 'schemaLocation',
             'type': 'Attribute',
@@ -208,7 +208,7 @@ class EERestitutedOrbitFile:
         namespace = basic.__NAMESPACE__
 
     schema_location: Optional[str] = field(
-        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['orbres_ffs2']}",
+        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['aux_orbres_ffs2']}",
         metadata={
             'name': 'schemaLocation',
             'type': 'Attribute',
@@ -252,7 +252,7 @@ class EORestitutedOrbitFile:
         namespace = basic.__NAMESPACE__
 
     schema_location: Optional[str] = field(
-        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['orbres_ffs3']}",
+        default=f"{basic.__NAMESPACE__} {basic.SCHEMA_URLS['aux_orbres_ffs3']}",
         metadata={
             'name': 'schemaLocation',
             'type': 'Attribute',
