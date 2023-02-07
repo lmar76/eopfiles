@@ -37,9 +37,9 @@ class TestOSV:
         assert isinstance(osv, orbits.OSV)
         fs = fields(osv)
         assert (
-            [f.name for f in fs] ==
-            ["tai", "utc", "ut1", "absolute_orbit",
-             "x", "y", "z", "vx", "vy", "vz", "quality"]
+            [f.name for f in fs]
+            == ["tai", "utc", "ut1", "absolute_orbit",
+                "x", "y", "z", "vx", "vy", "vz", "quality"]
         )
         for attr in ("tai", "utc", "utc"):
             assert isinstance(getattr(osv, attr), str)
@@ -97,9 +97,9 @@ class TestOSV:
         assert isinstance(osv, orbits.OSV)
         fs = fields(osv)
         assert (
-            [f.name for f in fs] ==
-            ["tai", "utc", "ut1", "absolute_orbit",
-             "x", "y", "z", "vx", "vy", "vz", "quality"]
+            [f.name for f in fs]
+            == ["tai", "utc", "ut1", "absolute_orbit",
+                "x", "y", "z", "vx", "vy", "vz", "quality"]
         )
         for attr in ("tai", "utc", "utc"):
             assert isinstance(getattr(osv, attr), str)
