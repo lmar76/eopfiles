@@ -19,7 +19,7 @@ class TestOSV:
                 "tai": "TAI=2014-06-11T10:50:40.855382",
                 "utc": "UTC=2014-06-11T10:51:15.855382",
                 "ut1": "UT1=2014-06-11T10:51:16.155381",
-                "absolute_orbit": 0,
+                "absolute_orbit": orbits.AbsoluteOrbit.from_int(0),
                 "x": basic.PositionComponentType.from_float(-2025630.454),
                 "y": basic.PositionComponentType.from_float(6765565.948),
                 "z": basic.PositionComponentType.from_float(0445518.75),
@@ -43,8 +43,8 @@ class TestOSV:
         for attr in ("tai", "utc", "utc"):
             assert isinstance(getattr(osv, attr), str)
             assert getattr(osv, attr) == parameters[attr]
-        assert isinstance(osv.absolute_orbit, int)
-        assert osv.absolute_orbit == parameters["absolute_orbit"]
+        assert isinstance(osv.absolute_orbit, orbits.AbsoluteOrbit)
+        assert osv.absolute_orbit.text == parameters["absolute_orbit"].text
         for attr in ("x", "y", "z"):
             value = getattr(osv, attr)
             assert isinstance(value, basic.PositionComponentType)
@@ -128,7 +128,7 @@ class TestListOfOSVs:
                         tai="TAI=2014-06-11T10:50:40.855382",
                         utc="UTC=2014-06-11T10:51:15.855382",
                         ut1="UT1=2014-06-11T10:51:16.155381",
-                        absolute_orbit=0,
+                        absolute_orbit=orbits.AbsoluteOrbit.from_int(0),
                         x=basic.PositionComponentType.from_float(-2025630.454),
                         y=basic.PositionComponentType.from_float(6765565.948),
                         z=basic.PositionComponentType.from_float(0445518.75),
@@ -179,7 +179,7 @@ class TestListOfOSVs:
                             tai="TAI=2014-06-11T10:50:40.855382",
                             utc="UTC=2014-06-11T10:51:15.855382",
                             ut1="UT1=2014-06-11T10:51:16.155381",
-                            absolute_orbit=0,
+                            absolute_orbit=orbits.AbsoluteOrbit.from_int(0),
                             x=basic.PositionComponentType.from_float(-2025630.454),
                             y=basic.PositionComponentType.from_float(6765565.948),
                             z=basic.PositionComponentType.from_float(0445518.75),

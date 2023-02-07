@@ -182,7 +182,7 @@ class PositionComponentType:
     class Meta:
         name = "Position_Component_Type"
 
-    value: Optional[str] = field(
+    text: Optional[str] = field(
         default=None,
         metadata={
             "required": True,
@@ -199,11 +199,11 @@ class PositionComponentType:
     )
 
     @classmethod
-    def from_float(cls, value) -> "PositionComponentType":
+    def from_float(cls, value: float) -> PositionComponentType:
         return cls(f"{value:+012.3f}")
 
     def to_float(self) -> float:
-        return float(self.value)
+        return float(self.text)
 
 
 # ===============================================
@@ -216,7 +216,7 @@ class VelocityComponentType:
     class Meta:
         name = "Velocity_Component_Type"
 
-    value: Optional[str] = field(
+    text: Optional[str] = field(
         default=None,
         metadata={
             "required": True,
@@ -233,8 +233,8 @@ class VelocityComponentType:
     )
 
     @classmethod
-    def from_float(cls, value) -> "VelocityComponentType":
+    def from_float(cls, value: float) -> VelocityComponentType:
         return cls(f"{value:+012.6f}")
 
     def to_float(self) -> float:
-        return float(self.value)
+        return float(self.text)

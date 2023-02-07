@@ -1,6 +1,5 @@
 """Test the `eopfiles.basic` module."""
 from dataclasses import fields
-from decimal import Decimal
 
 import pytest
 
@@ -11,17 +10,17 @@ class TestPositionComponentType:
     """Test the `PositionComponentType` class."""
 
     @pytest.mark.parametrize(
-        "value",
+        "text",
         ["-1606749.988", "-4135675.595"]
     )
-    def test_creation(self, value):
+    def test_creation(self, text):
         """Test instance creation."""
-        obj = basic.PositionComponentType(value)
+        obj = basic.PositionComponentType(text)
         fs = fields(obj)
-        assert [f.name for f in fs] == ["value", "unit"]
+        assert [f.name for f in fs] == ["text", "unit"]
         assert isinstance(obj, basic.PositionComponentType)
-        assert obj.value == value
-        assert obj.to_float() == float(value)
+        assert obj.text == text
+        assert obj.to_float() == float(text)
         assert obj.unit == next(f for f in fs if f.name == "unit").default
 
     @pytest.mark.parametrize(
@@ -34,24 +33,24 @@ class TestPositionComponentType:
         """Test the `PositionComponentType.from_float` class method."""
         obj = basic.PositionComponentType.from_float(value)
         assert isinstance(obj, basic.PositionComponentType)
-        assert obj.value == expected
+        assert obj.text == expected
 
 
 class TestVelocityComponentType:
     """Test the `VelocityComponentType` class."""
 
     @pytest.mark.parametrize(
-        "value",
+        "text",
         ["-2876.652288", "+5985.303441"]
     )
-    def test_creation(self, value):
+    def test_creation(self, text):
         """Test instance creation."""
-        obj = basic.VelocityComponentType(value)
+        obj = basic.VelocityComponentType(text)
         fs = fields(obj)
-        assert [f.name for f in fs] == ["value", "unit"]
+        assert [f.name for f in fs] == ["text", "unit"]
         assert isinstance(obj, basic.VelocityComponentType)
-        assert obj.value == value
-        assert obj.to_float() == float(value)
+        assert obj.text == text
+        assert obj.to_float() == float(text)
         assert obj.unit == next(f for f in fs if f.name == "unit").default
 
     @pytest.mark.parametrize(
@@ -64,4 +63,4 @@ class TestVelocityComponentType:
         """Test the `VelocityComponentType.from_float` class method."""
         obj = basic.VelocityComponentType.from_float(value)
         assert isinstance(obj, basic.VelocityComponentType)
-        assert obj.value == expected
+        assert obj.text == expected
