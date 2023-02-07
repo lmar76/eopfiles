@@ -26,6 +26,25 @@ class TimeReference(Enum):
 
 
 @dataclass
+class AbsoluteOrbit:
+
+    text: Optional[str] = field(
+        default=None,
+        metadata={
+            "required": True,
+            "pattern": r"[+-]\d{6}"
+        }
+    )
+
+    @classmethod
+    def from_int(cls, value: int) -> AbsoluteOrbit:
+        return cls(f"{value:+06d}")
+
+    def to_int(self) -> int:
+        return int(self.text)
+
+
+@dataclass
 class OSV:
     class Meta:
         name = "OSV"
@@ -60,7 +79,7 @@ class OSV:
             "pattern": times.UT1_DATE_TIME_PATTERN,
         }
     )
-    absolute_orbit: Optional[int] = field(
+    absolute_orbit: Optional[AbsoluteOrbit] = field(
         default=None,
         metadata={
             "name": "Absolute_Orbit",
