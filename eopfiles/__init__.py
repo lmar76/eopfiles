@@ -1,5 +1,6 @@
 from xsdata.formats.dataclass.context import XmlContext
 from xsdata.formats.dataclass.parsers import XmlParser
+from xsdata.formats.dataclass.parsers.config import ParserConfig
 from xsdata.formats.dataclass.serializers import XmlSerializer
 from xsdata.formats.dataclass.serializers.config import SerializerConfig
 
@@ -11,18 +12,16 @@ from . import (
     times
 )
 
-
-context = XmlContext()
-parser = XmlParser(context=context)
-serializer = XmlSerializer(context=context, config=SerializerConfig(pretty_print=True))
-
 __all__ = [
+    "ParserConfig",
+    "SerializerConfig",
+    "XmlContext",
+    "XmlParser",
+    "XmlSerializer",
     "aux_orbres",
     "basic",
     "headers",
     "mpl_orbpre",
-    "parser",
-    "serializer",
     "times"
 ]
 
