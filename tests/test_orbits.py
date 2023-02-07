@@ -1,6 +1,7 @@
 """Test the `eopfiles.orbits` module."""
 import re
 from dataclasses import fields
+from datetime import datetime
 
 import pytest
 from xsdata.formats.dataclass.context import XmlContext
@@ -133,16 +134,16 @@ class TestOSV:
                     "quality": "0000000000000"
                 },
                 dict(
-                    tai="TAI=2014-06-11T10:50:40.855382",
-                    utc="UTC=2014-06-11T10:51:15.855382",
-                    ut1="UT1=2014-06-11T10:51:16.155381",
-                    absolute_orbit={"text": "+00000"},
-                    x={"text": "-2025630.454", "unit": "m"},
-                    y={"text": "+6765565.948", "unit": "m"},
-                    z={"text": "+0445518.750", "unit": "m"},
-                    vx={"text": "+1655.255131", "unit": "m/s"},
-                    vy={"text": "-0002.394418", "unit": "m/s"},
-                    vz={"text": "+7415.236254", "unit": "m/s"},
+                    tai=datetime(2014, 6, 11, 10, 50, 40, 855382),
+                    utc=datetime(2014, 6, 11, 10, 51, 15, 855382),
+                    ut1=datetime(2014, 6, 11, 10, 51, 16, 155381),
+                    absolute_orbit=0,
+                    x=-2025630.454,
+                    y=+6765565.948,
+                    z=+0445518.750,
+                    vx=+1655.255131,
+                    vy=-0002.394418,
+                    vz=+7415.236254,
                     quality="0000000000000"
                 )
             )

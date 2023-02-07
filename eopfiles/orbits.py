@@ -1,5 +1,6 @@
 from __future__ import annotations
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
+from datetime import datetime
 from enum import Enum
 from typing import Any, Optional
 
@@ -154,7 +155,7 @@ class OSV:
     )
 
     def to_dict(self) -> dict[str, Any]:
-        """Convert `OSV` to dict recursively.
+        """Convert `OSV` to dict.
 
         Returns
         -------
@@ -162,7 +163,19 @@ class OSV:
             `OSV` information.
 
         """
-        return asdict(self)
+        return {
+            "tai": datetime.strptime(self.tai[4:], "%Y-%m-%dT%H:%M:%S.%f"),
+            "utc": datetime.strptime(self.utc[4:], "%Y-%m-%dT%H:%M:%S.%f"),
+            "ut1": datetime.strptime(self.ut1[4:], "%Y-%m-%dT%H:%M:%S.%f"),
+            "absolute_orbit": self.absolute_orbit.to_int(),
+            "x": self.x.to_float(),
+            "y": self.y.to_float(),
+            "z": self.z.to_float(),
+            "vx": self.vx.to_float(),
+            "vy": self.vy.to_float(),
+            "vz": self.vz.to_float(),
+            "quality": self.quality
+        }
 
 
 @dataclass
