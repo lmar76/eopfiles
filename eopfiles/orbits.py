@@ -1,7 +1,7 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from enum import Enum
-from typing import Optional
+from typing import Any, Optional
 
 from . import basic, times
 
@@ -152,6 +152,17 @@ class OSV:
             "pattern": r"0{13}"
         }
     )
+
+    def to_dict(self) -> dict[str, Any]:
+        """Convert `OSV` to dict recursively.
+
+        Returns
+        -------
+        dict[str, Any]
+            `OSV` information.
+
+        """
+        return asdict(self)
 
 
 @dataclass

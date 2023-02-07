@@ -77,7 +77,7 @@ class TestOSV:
                     tai="TAI=2014-06-11T10:50:40.855382",
                     utc="UTC=2014-06-11T10:51:15.855382",
                     ut1="UT1=2014-06-11T10:51:16.155381",
-                    absolute_orbit=0,
+                    absolute_orbit=orbits.AbsoluteOrbit.from_int(0),
                     x=basic.PositionComponentType.from_float(-2025630.454),
                     y=basic.PositionComponentType.from_float(6765565.948),
                     z=basic.PositionComponentType.from_float(0445518.75),
@@ -114,6 +114,44 @@ class TestOSV:
         assert isinstance(osv.quality, str)
         assert osv.quality == expected.quality
         assert re.match(next(f for f in fs if f.name == "quality").metadata["pattern"], osv.quality)
+
+    @pytest.mark.parametrize(
+        "parameters, expected",
+        [
+            (
+                {
+                    "tai": "TAI=2014-06-11T10:50:40.855382",
+                    "utc": "UTC=2014-06-11T10:51:15.855382",
+                    "ut1": "UT1=2014-06-11T10:51:16.155381",
+                    "absolute_orbit": orbits.AbsoluteOrbit.from_int(0),
+                    "x": basic.PositionComponentType.from_float(-2025630.454),
+                    "y": basic.PositionComponentType.from_float(6765565.948),
+                    "z": basic.PositionComponentType.from_float(0445518.75),
+                    "vx": basic.VelocityComponentType.from_float(1655.255131),
+                    "vy": basic.VelocityComponentType.from_float(-2.394418),
+                    "vz": basic.VelocityComponentType.from_float(7415.236254),
+                    "quality": "0000000000000"
+                },
+                dict(
+                    tai="TAI=2014-06-11T10:50:40.855382",
+                    utc="UTC=2014-06-11T10:51:15.855382",
+                    ut1="UT1=2014-06-11T10:51:16.155381",
+                    absolute_orbit={"text": "+00000"},
+                    x={"text": "-2025630.454", "unit": "m"},
+                    y={"text": "+6765565.948", "unit": "m"},
+                    z={"text": "+0445518.750", "unit": "m"},
+                    vx={"text": "+1655.255131", "unit": "m/s"},
+                    vy={"text": "-0002.394418", "unit": "m/s"},
+                    vz={"text": "+7415.236254", "unit": "m/s"},
+                    quality="0000000000000"
+                )
+            )
+        ]
+    )
+    def test_to_dict(self, parameters, expected):
+        """Test the `OSV.to_dict` method."""
+        osv = orbits.OSV(**parameters)
+        assert osv.to_dict() == expected
 
 
 class TestListOfOSVs:
