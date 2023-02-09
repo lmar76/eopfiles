@@ -1,4 +1,8 @@
+"""Basic types and global variables."""
 from __future__ import annotations
+
+__NAMESPACE__ = "http://eop-cfi.esa.int/CFI"
+
 from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Any, Optional
@@ -9,7 +13,6 @@ from typing import Any, Optional
 # ===============================================
 
 
-__NAMESPACE__ = "http://eop-cfi.esa.int/CFI"
 SCHEMA_URLS = {
     "aux_orbres_ffs1": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0105.XSD",
     "aux_orbres_ffs2": f"{__NAMESPACE__}/EE_CFI_SCHEMAS/EO_OPER_AUX_ORBRES_0203.XSD",

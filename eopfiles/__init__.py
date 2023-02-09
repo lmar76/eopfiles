@@ -1,3 +1,17 @@
+__all__ = [
+    "ParserConfig",
+    "SerializerConfig",
+    "XmlContext",
+    "XmlParser",
+    "XmlSerializer",
+    "aux_orbres",
+    "basic",
+    "headers",
+    "mpl_orbpre",
+    "times"
+]
+__version__ = "0.1"
+
 from xsdata.formats.dataclass.context import XmlContext
 from xsdata.formats.dataclass.parsers import XmlParser
 from xsdata.formats.dataclass.parsers.config import ParserConfig
@@ -11,18 +25,3 @@ from . import (
     mpl_orbpre,
     times
 )
-
-__all__ = [
-    "ParserConfig",
-    "SerializerConfig",
-    "XmlContext",
-    "XmlParser",
-    "XmlSerializer",
-    "aux_orbres",
-    "basic",
-    "headers",
-    "mpl_orbpre",
-    "times"
-]
-
-__version__ = "0.1"
