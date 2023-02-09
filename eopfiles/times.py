@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from decimal import Decimal
-from enum import Enum
+from enum import auto, Enum
 from typing import Optional
 
 
@@ -22,13 +22,6 @@ UTC_DATE_TIME_PATTERN = r"UTC=.*"
 UT1_DATE_TIME_PATTERN = r"UT1=.*"
 UTC_BOM_DATE_TIME_PATTERN = r"UTC=0000-00-00T00:00:00"
 UTC_EOM_DATE_TIME_PATTERN = r"UTC=9999-99-99T99:99:99"
-
-
-class TimeReferenceType(Enum):
-    UTC = "UTC"
-    UT1 = "UT1"
-    TAI = "TAI"
-    GPS = "GPS"
 
 
 @dataclass
