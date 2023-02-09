@@ -3,29 +3,29 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from enum import auto, Enum
+from enum import Enum
 from typing import Any, Optional
 
 from . import basic, times
 
 
 class RefFrame(Enum):
-    BAR_MEAN_2000 = auto()
-    HEL_MEAN_2000 = auto()
-    GEO_MEAN_2000 = auto()
-    MEAN_DATE = auto()
-    TRUE_DATE = auto()
-    EARTH_FIXED = auto()
-    BAR_MEAN_1950 = auto()
-    QUASI_MEAN_DATE = auto()
-    PSE_TRUE_DATE = auto()
-    PSEUDO_EARTH_FIXED = auto()
+    BAR_MEAN_2000 = "BAR_MEAN_2000"
+    HEL_MEAN_2000 = "HEL_MEAN_2000"
+    GEO_MEAN_2000 = "GEO_MEAN_2000"
+    MEAN_DATE = "MEAN_DATE"
+    TRUE_DATE = "TRUE_DATE"
+    EARTH_FIXED = "EARTH_FIXED"
+    BAR_MEAN_1950 = "BAR_MEAN_1950"
+    QUASI_MEAN_DATE = "QUASI_MEAN_DATE"
+    PSE_TRUE_DATE = "PSE_TRUE_DATE"
+    PSEUDO_EARTH_FIXED = "PSEUDO_EARTH_FIXED"
 
 
 class TimeReference(Enum):
-    TAI = auto()
-    UTC = auto()
-    UT1 = auto()
+    TAI = "TAI"
+    UTC = "UTC"
+    UT1 = "UT1"
 
 
 @dataclass
