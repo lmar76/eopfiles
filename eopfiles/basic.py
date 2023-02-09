@@ -185,15 +185,13 @@ class PositionComponentType:
     class Meta:
         name = "Position_Component_Type"
 
-    text: Optional[str] = field(
-        default=None,
+    text: str = field(
         metadata={
             "required": True,
             "pattern": r"[+-]\d{7}\.\d{3}"
         }
     )
     unit: str = field(
-        init=False,
         default="m",
         metadata={
             "type": "Attribute",
@@ -203,9 +201,11 @@ class PositionComponentType:
 
     @classmethod
     def from_float(cls, value: float) -> PositionComponentType:
+        """Alternative to constructor in case of `float` values."""
         return cls(f"{value:+012.3f}")
 
     def to_float(self) -> float:
+        """Convert `text` to `float`."""
         return float(self.text)
 
 
@@ -219,15 +219,13 @@ class VelocityComponentType:
     class Meta:
         name = "Velocity_Component_Type"
 
-    text: Optional[str] = field(
-        default=None,
+    text: str = field(
         metadata={
             "required": True,
             "pattern": r"[+-]\d{7}\.\d{6}"
         }
     )
     unit: str = field(
-        init=False,
         default="m/s",
         metadata={
             "type": "Attribute",
@@ -237,7 +235,9 @@ class VelocityComponentType:
 
     @classmethod
     def from_float(cls, value: float) -> VelocityComponentType:
+        """Alternative to constructor in case of `float` values."""
         return cls(f"{value:+012.6f}")
 
     def to_float(self) -> float:
+        """Convert `text` to float."""
         return float(self.text)

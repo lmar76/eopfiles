@@ -10,18 +10,25 @@ class TestPositionComponentType:
     """Test the `PositionComponentType` class."""
 
     @pytest.mark.parametrize(
-        "text",
-        ["-1606749.988", "-4135675.595"]
+        "params",
+        [
+            {
+                "text": "-1606749.988"
+            },
+            {
+                "text": "-4135675.595",
+                "unit": "xxxxxx"
+            }
+        ]
     )
-    def test_creation(self, text):
+    def test_creation(self, params):
         """Test instance creation."""
-        obj = basic.PositionComponentType(text)
-        fs = fields(obj)
-        assert [f.name for f in fs] == ["text", "unit"]
+        obj = basic.PositionComponentType(**params)
         assert isinstance(obj, basic.PositionComponentType)
-        assert obj.text == text
-        assert obj.to_float() == float(text)
-        assert obj.unit == next(f for f in fs if f.name == "unit").default
+        assert obj.text == params["text"]
+        if "unit" in params:
+            assert obj.unit == params["unit"]
+        assert obj.to_float() == float(params["text"])
 
     @pytest.mark.parametrize(
         "value, expected",
@@ -40,18 +47,25 @@ class TestVelocityComponentType:
     """Test the `VelocityComponentType` class."""
 
     @pytest.mark.parametrize(
-        "text",
-        ["-2876.652288", "+5985.303441"]
+        "params",
+        [
+            {
+                "text": "-2876.652288"
+            },
+            {
+                "text": "+5985.303441",
+                "unit": "aaa"
+            }
+        ]
     )
-    def test_creation(self, text):
+    def test_creation(self, params):
         """Test instance creation."""
-        obj = basic.VelocityComponentType(text)
-        fs = fields(obj)
-        assert [f.name for f in fs] == ["text", "unit"]
+        obj = basic.VelocityComponentType(**params)
         assert isinstance(obj, basic.VelocityComponentType)
-        assert obj.text == text
-        assert obj.to_float() == float(text)
-        assert obj.unit == next(f for f in fs if f.name == "unit").default
+        assert obj.text == params["text"]
+        if "unit" in params:
+            assert obj.unit == params["unit"]
+        assert obj.to_float() == float(params["text"])
 
     @pytest.mark.parametrize(
         "value, expected",

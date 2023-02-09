@@ -31,8 +31,7 @@ class TimeReference(Enum):
 @dataclass
 class AbsoluteOrbit:
 
-    text: Optional[str] = field(
-        default=None,
+    text: str = field(
         metadata={
             "required": True,
             "pattern": r"[+-]\d{6}"
@@ -41,9 +40,11 @@ class AbsoluteOrbit:
 
     @classmethod
     def from_int(cls, value: int) -> AbsoluteOrbit:
+        """Alternative to constructor in case of `int` values."""
         return cls(f"{value:+06d}")
 
     def to_int(self) -> int:
+        """Convert `text` to `int`."""
         return int(self.text)
 
 
@@ -52,8 +53,7 @@ class OSV:
     class Meta:
         name = "OSV"
 
-    tai: Optional[str] = field(
-        default=None,
+    tai: str = field(
         metadata={
             "name": "TAI",
             "type": "Element",
@@ -62,8 +62,7 @@ class OSV:
             "pattern": times.TAI_DATE_TIME_PATTERN,
         }
     )
-    utc: Optional[str] = field(
-        default=None,
+    utc: str = field(
         metadata={
             "name": "UTC",
             "type": "Element",
@@ -72,8 +71,7 @@ class OSV:
             "pattern": times.UTC_DATE_TIME_PATTERN,
         }
     )
-    ut1: Optional[str] = field(
-        default=None,
+    ut1: str = field(
         metadata={
             "name": "UT1",
             "type": "Element",
@@ -82,8 +80,7 @@ class OSV:
             "pattern": times.UT1_DATE_TIME_PATTERN,
         }
     )
-    absolute_orbit: Optional[AbsoluteOrbit] = field(
-        default=None,
+    absolute_orbit: AbsoluteOrbit = field(
         metadata={
             "name": "Absolute_Orbit",
             "type": "Element",
@@ -91,8 +88,7 @@ class OSV:
             "required": True,
         }
     )
-    x: Optional[basic.PositionComponentType] = field(
-        default=None,
+    x: basic.PositionComponentType = field(
         metadata={
             "name": "X",
             "type": "Element",
@@ -100,8 +96,7 @@ class OSV:
             "required": True,
         }
     )
-    y: Optional[basic.PositionComponentType] = field(
-        default=None,
+    y: basic.PositionComponentType = field(
         metadata={
             "name": "Y",
             "type": "Element",
@@ -109,8 +104,7 @@ class OSV:
             "required": True,
         }
     )
-    z: Optional[basic.PositionComponentType] = field(
-        default=None,
+    z: basic.PositionComponentType = field(
         metadata={
             "name": "Z",
             "type": "Element",
@@ -118,8 +112,7 @@ class OSV:
             "required": True,
         }
     )
-    vx: Optional[basic.VelocityComponentType] = field(
-        default=None,
+    vx: basic.VelocityComponentType = field(
         metadata={
             "name": "VX",
             "type": "Element",
@@ -127,8 +120,7 @@ class OSV:
             "required": True,
         }
     )
-    vy: Optional[basic.VelocityComponentType] = field(
-        default=None,
+    vy: basic.VelocityComponentType = field(
         metadata={
             "name": "VY",
             "type": "Element",
@@ -136,8 +128,7 @@ class OSV:
             "required": True,
         }
     )
-    vz: Optional[basic.VelocityComponentType] = field(
-        default=None,
+    vz: basic.VelocityComponentType = field(
         metadata={
             "name": "VZ",
             "type": "Element",
@@ -145,7 +136,7 @@ class OSV:
             "required": True,
         }
     )
-    quality: Optional[str] = field(
+    quality: str = field(
         default="0000000000000",
         metadata={
             "name": "Quality",
