@@ -49,9 +49,13 @@ class TestOSV:
         for attr in ("x", "y", "z"):
             value = getattr(osv, attr)
             assert isinstance(value, basic.PositionComponentType)
+            assert value.text == parameters[attr].text
+            assert value.unit == parameters[attr].unit
         for attr in ("vx", "vy", "vz"):
             value = getattr(osv, attr)
             assert isinstance(value, basic.VelocityComponentType)
+            assert value.text == parameters[attr].text
+            assert value.unit == parameters[attr].unit
         assert isinstance(osv.quality, str)
         assert osv.quality == parameters["quality"]
         assert re.match(next(f for f in fs if f.name == "quality").metadata["pattern"], osv.quality)
@@ -109,9 +113,13 @@ class TestOSV:
         for attr in ("x", "y", "z"):
             value = getattr(osv, attr)
             assert isinstance(value, basic.PositionComponentType)
+            assert value.text == getattr(expected, attr).text
+            assert value.unit == getattr(expected, attr).unit
         for attr in ("vx", "vy", "vz"):
             value = getattr(osv, attr)
             assert isinstance(value, basic.VelocityComponentType)
+            assert value.text == getattr(expected, attr).text
+            assert value.unit == getattr(expected, attr).unit
         assert isinstance(osv.quality, str)
         assert osv.quality == expected.quality
         assert re.match(next(f for f in fs if f.name == "quality").metadata["pattern"], osv.quality)
