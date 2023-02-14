@@ -18,7 +18,7 @@ class TestOSV:
                 "tai": "TAI=2014-06-11T10:50:40.855382",
                 "utc": "UTC=2014-06-11T10:51:15.855382",
                 "ut1": "UT1=2014-06-11T10:51:16.155381",
-                "absolute_orbit": orbits.AbsoluteOrbit.from_int(0),
+                "absolute_orbit": orbits.AbsoluteOrbit(basic.IntFmtValue(0)),
                 "x": basic.PositionComponent(basic.FloatingFmtValue(-2025630.454)),
                 "y": basic.PositionComponent(basic.FloatingFmtValue(6765565.948)),
                 "z": basic.PositionComponent(basic.FloatingFmtValue(0445518.75)),
@@ -43,7 +43,8 @@ class TestOSV:
             assert isinstance(getattr(osv, attr), str)
             assert getattr(osv, attr) == parameters[attr]
         assert isinstance(osv.absolute_orbit, orbits.AbsoluteOrbit)
-        assert osv.absolute_orbit.text == parameters["absolute_orbit"].text
+        assert isinstance(osv.absolute_orbit.value, basic.IntFmtValue)
+        assert osv.absolute_orbit.value == parameters["absolute_orbit"].value
         for attr in ("x", "y", "z"):
             value = getattr(osv, attr)
             assert isinstance(value, basic.PositionComponent)
@@ -66,7 +67,7 @@ class TestOSV:
                     "tai": "TAI=2014-06-11T10:50:40.855382",
                     "utc": "UTC=2014-06-11T10:51:15.855382",
                     "ut1": "UT1=2014-06-11T10:51:16.155381",
-                    "absolute_orbit": orbits.AbsoluteOrbit.from_int(0),
+                    "absolute_orbit": orbits.AbsoluteOrbit(basic.IntFmtValue(0)),
                     "x": basic.PositionComponent(basic.FloatingFmtValue(-2025630.454)),
                     "y": basic.PositionComponent(basic.FloatingFmtValue(6765565.948)),
                     "z": basic.PositionComponent(basic.FloatingFmtValue(0445518.75)),
@@ -109,7 +110,7 @@ class TestListOfOSVs:
                         tai="TAI=2014-06-11T10:50:40.855382",
                         utc="UTC=2014-06-11T10:51:15.855382",
                         ut1="UT1=2014-06-11T10:51:16.155381",
-                        absolute_orbit=orbits.AbsoluteOrbit.from_int(0),
+                        absolute_orbit=orbits.AbsoluteOrbit(basic.IntFmtValue(0)),
                         x=basic.PositionComponent(basic.FloatingFmtValue(-2025630.454)),
                         y=basic.PositionComponent(basic.FloatingFmtValue(6765565.948)),
                         z=basic.PositionComponent(basic.FloatingFmtValue(0445518.75)),

@@ -31,21 +31,12 @@ class TimeReference(Enum):
 @dataclass
 class AbsoluteOrbit:
 
-    text: str = field(
+    value: basic.IntFmtValue = field(
         metadata={
             "required": True,
-            "pattern": r"[+-]\d{6}"
+            "format": r"{:+06d}"
         }
     )
-
-    @classmethod
-    def from_int(cls, value: int) -> AbsoluteOrbit:
-        """Alternative to constructor in case of `int` values."""
-        return cls(f"{value:+06d}")
-
-    def to_int(self) -> int:
-        """Convert `text` to `int`."""
-        return int(self.text)
 
 
 @dataclass
@@ -160,7 +151,7 @@ class OSV:
             "tai": datetime.strptime(self.tai[4:], "%Y-%m-%dT%H:%M:%S.%f"),
             "utc": datetime.strptime(self.utc[4:], "%Y-%m-%dT%H:%M:%S.%f"),
             "ut1": datetime.strptime(self.ut1[4:], "%Y-%m-%dT%H:%M:%S.%f"),
-            "absolute_orbit": self.absolute_orbit.to_int(),
+            "absolute_orbit": self.absolute_orbit.value,
             "x": self.x.value,
             "y": self.y.value,
             "z": self.z.value,

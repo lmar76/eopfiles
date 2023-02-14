@@ -90,11 +90,15 @@ class AnyTypeType:
 
 
 # ===============================================
-# Floating types
+# Numeric types
 # ===============================================
 
 
 class FloatingFmtValue(float):
+    pass
+
+
+class IntFmtValue(int):
     pass
 
 
@@ -110,7 +114,20 @@ class FloatingFmtValueConverter(Converter):
         return str(value)
 
 
+class IntFmtValueConverter(Converter):
+    """Converter for `IntFmtValue` class."""
+
+    def deserialize(self, value: str, **kwargs: Any) -> IntFmtValue:
+        return IntFmtValue(value)
+
+    def serialize(self, value: IntFmtValue, **kwargs: Any) -> str:
+        if kwargs.get("format"):
+            return kwargs["format"].format(value)
+        return str(value)
+
+
 converter.register_converter(FloatingFmtValue, FloatingFmtValueConverter())
+converter.register_converter(IntFmtValue, IntFmtValueConverter())
 
 
 # ===============================================
@@ -214,7 +231,7 @@ class PositionComponent:
     value: FloatingFmtValue = field(
         metadata={
             "required": True,
-            "format": "+012.3f"
+            "format": "{:+012.3f}"
         }
     )
     unit: str = field(
@@ -239,7 +256,7 @@ class VelocityComponent:
     value: FloatingFmtValue = field(
         metadata={
             "required": True,
-            "format": "+012.6f"
+            "format": "{:+012.6f}"
         }
     )
     unit: str = field(
