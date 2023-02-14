@@ -31,7 +31,7 @@ class PredictedOrbitFileVariableHeader:
 
 
 @dataclass
-class PredictedOrbitFileDataBlockType:
+class PredictedOrbitFileDataBlock:
     class Meta:
         name = "Data_Block"
 
@@ -62,7 +62,7 @@ class PredictedOrbitFileDataBlockType:
 
 
 @dataclass
-class EEPredictedOrbitFileHeaderTypeFFS1:
+class EEPredictedOrbitFileHeaderFFS1:
     class Meta:
         name = "Earth_Explorer_Header"
 
@@ -94,7 +94,7 @@ class EEPredictedOrbitFileHeaderTypeFFS1:
 
 
 @dataclass
-class EEPredictedOrbitFileHeaderType:
+class EEPredictedOrbitFileHeader:
     class Meta:
         name = "Earth_Explorer_Header"
 
@@ -126,7 +126,7 @@ class EEPredictedOrbitFileHeaderType:
 
 
 @dataclass
-class EOPredictedOrbitFileHeaderType:
+class EOPredictedOrbitFileHeader:
     class Meta:
         name = "Earth_Observation_Header"
 
@@ -173,7 +173,7 @@ class EEPredictedOrbitFileFFS1:
         }
     )
 
-    header: Optional[EEPredictedOrbitFileHeaderTypeFFS1] = field(
+    header: Optional[EEPredictedOrbitFileHeaderFFS1] = field(
         default=None,
         metadata={
             "name": "Earth_Explorer_Header",
@@ -182,7 +182,7 @@ class EEPredictedOrbitFileFFS1:
             "required": True,
         }
     )
-    data_block: Optional[PredictedOrbitFileDataBlockType] = field(
+    data_block: Optional[PredictedOrbitFileDataBlock] = field(
         default=None,
         metadata={
             "name": "Data_Block",
@@ -217,7 +217,7 @@ class EEPredictedOrbitFile:
         }
     )
 
-    header: Optional[EEPredictedOrbitFileHeaderType] = field(
+    header: Optional[EEPredictedOrbitFileHeader] = field(
         default=None,
         metadata={
             "name": "Earth_Explorer_Header",
@@ -226,7 +226,7 @@ class EEPredictedOrbitFile:
             "required": True,
         }
     )
-    data_block: Optional[PredictedOrbitFileDataBlockType] = field(
+    data_block: Optional[PredictedOrbitFileDataBlock] = field(
         default=None,
         metadata={
             "name": "Data_Block",
@@ -261,7 +261,7 @@ class EOPredictedOrbitFile:
         }
     )
 
-    header: Optional[EOPredictedOrbitFileHeaderType] = field(
+    header: Optional[EOPredictedOrbitFileHeader] = field(
         default=None,
         metadata={
             "name": "Earth_Observation_Header",
@@ -270,7 +270,7 @@ class EOPredictedOrbitFile:
             "required": True,
         }
     )
-    data_block: Optional[PredictedOrbitFileDataBlockType] = field(
+    data_block: Optional[PredictedOrbitFileDataBlock] = field(
         default=None,
         metadata={
             "name": "Data_Block",

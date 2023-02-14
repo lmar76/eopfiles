@@ -61,7 +61,7 @@ class RestitutedOrbitFileDataBlock:
 
 
 @dataclass
-class EERestitutedOrbitHeaderTypeFFS1:
+class EERestitutedOrbitHeaderFFS1:
     class Meta:
         name = "Earth_Explorer_Header"
 
@@ -93,7 +93,7 @@ class EERestitutedOrbitHeaderTypeFFS1:
 
 
 @dataclass
-class EERestitutedOrbitHeaderType:
+class EERestitutedOrbitHeader:
     class Meta:
         name = "Earth_Explorer_Header"
 
@@ -125,7 +125,7 @@ class EERestitutedOrbitHeaderType:
 
 
 @dataclass
-class EORestitutedOrbitHeaderType:
+class EORestitutedOrbitHeader:
     class Meta:
         name = "Earth_Observation_Header"
 
@@ -172,7 +172,7 @@ class EERestitutedOrbitFileFFS1:
         }
     )
 
-    header: Optional[EERestitutedOrbitHeaderTypeFFS1] = field(
+    header: Optional[EERestitutedOrbitHeaderFFS1] = field(
         default=None,
         metadata={
             "name": "Earth_Explorer_Header",
@@ -216,7 +216,7 @@ class EERestitutedOrbitFile:
         }
     )
 
-    header: Optional[EERestitutedOrbitHeaderType] = field(
+    header: Optional[EERestitutedOrbitHeader] = field(
         default=None,
         metadata={
             "name": "Earth_Explorer_Header",
@@ -260,7 +260,7 @@ class EORestitutedOrbitFile:
         }
     )
 
-    header: Optional[EORestitutedOrbitHeaderType] = field(
+    header: Optional[EORestitutedOrbitHeader] = field(
         default=None,
         metadata={
             "name": "Earth_Observation_Header",

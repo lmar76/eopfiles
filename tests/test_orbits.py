@@ -58,7 +58,6 @@ class TestOSV:
         assert osv.quality == parameters["quality"]
         assert re.match(next(f for f in fs if f.name == "quality").metadata["pattern"], osv.quality)
 
-
     @pytest.mark.parametrize(
         "parameters, expected",
         [
