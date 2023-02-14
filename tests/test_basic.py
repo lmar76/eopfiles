@@ -1,6 +1,4 @@
 """Test the `eopfiles.basic` module."""
-from dataclasses import fields
-
 import pytest
 
 from eopfiles import basic

@@ -35,8 +35,7 @@ class RestitutedOrbitFileDataBlockType:
     class Meta:
         name = "Data_Block"
 
-    list_of_osvs: Optional[orbits.ListOfOSVs] = field(
-        default=None,
+    list_of_osvs: orbits.ListOfOSVs = field(
         metadata={
             "name": "List_of_OSVs",
             "type": "Element",
@@ -287,3 +286,28 @@ class EORestitutedOrbitFile:
             "required": True,
         }
     )
+
+
+@dataclass
+class EEOrbitStateVectorFileFFS1(EERestitutedOrbitFileFFS1):
+
+    class Meta:
+        name = "Earth_Explorer_File"
+        namespace = basic.__NAMESPACE__
+
+
+@dataclass
+class EEOrbitStateVectorFile(EERestitutedOrbitFile):
+
+    class Meta:
+        name = "Earth_Explorer_File"
+        namespace = basic.__NAMESPACE__
+
+
+@dataclass
+class EOOrbitStateVectorFile(EORestitutedOrbitFile):
+
+    class Meta:
+        name = "Earth_Observation_File"
+        namespace = basic.__NAMESPACE__
+
