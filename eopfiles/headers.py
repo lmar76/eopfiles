@@ -82,7 +82,7 @@ class Source:
 
 
 @dataclass
-class EEFixedHeaderTypeFFS1:
+class EEFixedHeaderFFS1:
     class Meta:
         name = "Fixed_Header"
 
@@ -174,7 +174,7 @@ class EEFixedHeaderTypeFFS1:
 
 
 @dataclass
-class EEFixedHeaderType:
+class EEFixedHeader:
     class Meta:
         name = "Fixed_Header"
 
@@ -266,7 +266,7 @@ class EEFixedHeaderType:
 
 
 @dataclass
-class EOFixedHeaderType:
+class EOFixedHeader:
     class Meta:
         name = "Fixed_Header"
 

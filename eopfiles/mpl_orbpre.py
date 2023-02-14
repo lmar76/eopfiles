@@ -66,7 +66,7 @@ class EEPredictedOrbitFileHeaderTypeFFS1:
     class Meta:
         name = "Earth_Explorer_Header"
 
-    fixed_header: Optional[headers.EEFixedHeaderTypeFFS1] = field(
+    fixed_header: Optional[headers.EEFixedHeaderFFS1] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",
@@ -98,7 +98,7 @@ class EEPredictedOrbitFileHeaderType:
     class Meta:
         name = "Earth_Explorer_Header"
 
-    fixed_header: Optional[headers.EEFixedHeaderType] = field(
+    fixed_header: Optional[headers.EEFixedHeader] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",
@@ -130,7 +130,7 @@ class EOPredictedOrbitFileHeaderType:
     class Meta:
         name = "Earth_Observation_Header"
 
-    fixed_header: Optional[headers.EOFixedHeaderType] = field(
+    fixed_header: Optional[headers.EOFixedHeader] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",

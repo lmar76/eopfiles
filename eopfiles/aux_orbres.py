@@ -31,7 +31,7 @@ class RestitutedOrbitFileVariableHeader:
 
 
 @dataclass
-class RestitutedOrbitFileDataBlockType:
+class RestitutedOrbitFileDataBlock:
     class Meta:
         name = "Data_Block"
 
@@ -65,7 +65,7 @@ class EERestitutedOrbitHeaderTypeFFS1:
     class Meta:
         name = "Earth_Explorer_Header"
 
-    fixed_header: Optional[headers.EEFixedHeaderTypeFFS1] = field(
+    fixed_header: Optional[headers.EEFixedHeaderFFS1] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",
@@ -97,7 +97,7 @@ class EERestitutedOrbitHeaderType:
     class Meta:
         name = "Earth_Explorer_Header"
 
-    fixed_header: Optional[headers.EEFixedHeaderType] = field(
+    fixed_header: Optional[headers.EEFixedHeader] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",
@@ -129,7 +129,7 @@ class EORestitutedOrbitHeaderType:
     class Meta:
         name = "Earth_Observation_Header"
 
-    fixed_header: Optional[headers.EOFixedHeaderType] = field(
+    fixed_header: Optional[headers.EOFixedHeader] = field(
         default=None,
         metadata={
             "name": "Fixed_Header",
@@ -181,7 +181,7 @@ class EERestitutedOrbitFileFFS1:
             "required": True,
         }
     )
-    data_block: Optional[RestitutedOrbitFileDataBlockType] = field(
+    data_block: Optional[RestitutedOrbitFileDataBlock] = field(
         default=None,
         metadata={
             "name": "Data_Block",
@@ -225,7 +225,7 @@ class EERestitutedOrbitFile:
             "required": True,
         }
     )
-    data_block: Optional[RestitutedOrbitFileDataBlockType] = field(
+    data_block: Optional[RestitutedOrbitFileDataBlock] = field(
         default=None,
         metadata={
             "name": "Data_Block",
@@ -269,7 +269,7 @@ class EORestitutedOrbitFile:
             "required": True,
         }
     )
-    data_block: Optional[RestitutedOrbitFileDataBlockType] = field(
+    data_block: Optional[RestitutedOrbitFileDataBlock] = field(
         default=None,
         metadata={
             "name": "Data_Block",
