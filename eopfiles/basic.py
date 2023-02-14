@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Any, Optional
 
-from xsdata.formats.converter import Converter, converter
+from xsdata.formats.converter import Converter, ConverterError, converter
 
 
 # ===============================================
@@ -106,7 +106,10 @@ class FloatingFmtValueConverter(Converter):
     """Converter for `FloatingFmtValue` class."""
 
     def deserialize(self, value: str, **kwargs: Any) -> FloatingFmtValue:
-        return FloatingFmtValue(value)
+        try:
+            return FloatingFmtValue(value)
+        except ValueError as err:
+            raise ConverterError(err)
 
     def serialize(self, value: FloatingFmtValue, **kwargs: Any) -> str:
         if kwargs.get("format"):
@@ -118,7 +121,10 @@ class IntFmtValueConverter(Converter):
     """Converter for `IntFmtValue` class."""
 
     def deserialize(self, value: str, **kwargs: Any) -> IntFmtValue:
-        return IntFmtValue(value)
+        try:
+            return IntFmtValue(value)
+        except ValueError as err:
+            raise ConverterError(err)
 
     def serialize(self, value: IntFmtValue, **kwargs: Any) -> str:
         if kwargs.get("format"):
