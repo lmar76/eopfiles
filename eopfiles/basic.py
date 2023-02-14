@@ -181,9 +181,9 @@ class EquatorCrossLongType:
 
 
 @dataclass
-class PositionComponentType:
+class PositionComponent:
     class Meta:
-        name = "Position_Component_Type"
+        name = "Position_Component"
 
     text: str = field(
         metadata={
@@ -200,7 +200,7 @@ class PositionComponentType:
     )
 
     @classmethod
-    def from_float(cls, value: float) -> PositionComponentType:
+    def from_float(cls, value: float) -> PositionComponent:
         """Alternative to constructor in case of `float` values."""
         return cls(f"{value:+012.3f}")
 
@@ -215,9 +215,9 @@ class PositionComponentType:
 
 
 @dataclass
-class VelocityComponentType:
+class VelocityComponent:
     class Meta:
-        name = "Velocity_Component_Type"
+        name = "Velocity_Component"
 
     text: str = field(
         metadata={
@@ -234,7 +234,7 @@ class VelocityComponentType:
     )
 
     @classmethod
-    def from_float(cls, value: float) -> VelocityComponentType:
+    def from_float(cls, value: float) -> VelocityComponent:
         """Alternative to constructor in case of `float` values."""
         return cls(f"{value:+012.6f}")
 

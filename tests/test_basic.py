@@ -5,7 +5,7 @@ from eopfiles import basic
 
 
 class TestPositionComponentType:
-    """Test the `PositionComponentType` class."""
+    """Test the `PositionComponent` class."""
 
     @pytest.mark.parametrize(
         "params",
@@ -21,8 +21,8 @@ class TestPositionComponentType:
     )
     def test_creation(self, params):
         """Test instance creation."""
-        obj = basic.PositionComponentType(**params)
-        assert isinstance(obj, basic.PositionComponentType)
+        obj = basic.PositionComponent(**params)
+        assert isinstance(obj, basic.PositionComponent)
         assert obj.text == params["text"]
         if "unit" in params:
             assert obj.unit == params["unit"]
@@ -35,14 +35,14 @@ class TestPositionComponentType:
         ]
     )
     def test_from_float(self, value, expected):
-        """Test the `PositionComponentType.from_float` class method."""
-        obj = basic.PositionComponentType.from_float(value)
-        assert isinstance(obj, basic.PositionComponentType)
+        """Test the `PositionComponent.from_float` class method."""
+        obj = basic.PositionComponent.from_float(value)
+        assert isinstance(obj, basic.PositionComponent)
         assert obj.text == expected
 
 
 class TestVelocityComponentType:
-    """Test the `VelocityComponentType` class."""
+    """Test the `VelocityComponent` class."""
 
     @pytest.mark.parametrize(
         "params",
@@ -58,8 +58,8 @@ class TestVelocityComponentType:
     )
     def test_creation(self, params):
         """Test instance creation."""
-        obj = basic.VelocityComponentType(**params)
-        assert isinstance(obj, basic.VelocityComponentType)
+        obj = basic.VelocityComponent(**params)
+        assert isinstance(obj, basic.VelocityComponent)
         assert obj.text == params["text"]
         if "unit" in params:
             assert obj.unit == params["unit"]
@@ -72,7 +72,7 @@ class TestVelocityComponentType:
         ]
     )
     def test_from_float(self, value, expected):
-        """Test the `VelocityComponentType.from_float` class method."""
-        obj = basic.VelocityComponentType.from_float(value)
-        assert isinstance(obj, basic.VelocityComponentType)
+        """Test the `VelocityComponent.from_float` class method."""
+        obj = basic.VelocityComponent.from_float(value)
+        assert isinstance(obj, basic.VelocityComponent)
         assert obj.text == expected

@@ -88,7 +88,7 @@ class OSV:
             "required": True,
         }
     )
-    x: basic.PositionComponentType = field(
+    x: basic.PositionComponent = field(
         metadata={
             "name": "X",
             "type": "Element",
@@ -96,7 +96,7 @@ class OSV:
             "required": True,
         }
     )
-    y: basic.PositionComponentType = field(
+    y: basic.PositionComponent = field(
         metadata={
             "name": "Y",
             "type": "Element",
@@ -104,7 +104,7 @@ class OSV:
             "required": True,
         }
     )
-    z: basic.PositionComponentType = field(
+    z: basic.PositionComponent = field(
         metadata={
             "name": "Z",
             "type": "Element",
@@ -112,7 +112,7 @@ class OSV:
             "required": True,
         }
     )
-    vx: basic.VelocityComponentType = field(
+    vx: basic.VelocityComponent = field(
         metadata={
             "name": "VX",
             "type": "Element",
@@ -120,7 +120,7 @@ class OSV:
             "required": True,
         }
     )
-    vy: basic.VelocityComponentType = field(
+    vy: basic.VelocityComponent = field(
         metadata={
             "name": "VY",
             "type": "Element",
@@ -128,7 +128,7 @@ class OSV:
             "required": True,
         }
     )
-    vz: basic.VelocityComponentType = field(
+    vz: basic.VelocityComponent = field(
         metadata={
             "name": "VZ",
             "type": "Element",

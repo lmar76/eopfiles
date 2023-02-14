@@ -19,12 +19,12 @@ class TestOSV:
                 "utc": "UTC=2014-06-11T10:51:15.855382",
                 "ut1": "UT1=2014-06-11T10:51:16.155381",
                 "absolute_orbit": orbits.AbsoluteOrbit.from_int(0),
-                "x": basic.PositionComponentType.from_float(-2025630.454),
-                "y": basic.PositionComponentType.from_float(6765565.948),
-                "z": basic.PositionComponentType.from_float(0445518.75),
-                "vx": basic.VelocityComponentType.from_float(1655.255131),
-                "vy": basic.VelocityComponentType.from_float(-2.394418),
-                "vz": basic.VelocityComponentType.from_float(7415.236254),
+                "x": basic.PositionComponent.from_float(-2025630.454),
+                "y": basic.PositionComponent.from_float(6765565.948),
+                "z": basic.PositionComponent.from_float(0445518.75),
+                "vx": basic.VelocityComponent.from_float(1655.255131),
+                "vy": basic.VelocityComponent.from_float(-2.394418),
+                "vz": basic.VelocityComponent.from_float(7415.236254),
                 "quality": "0000000000000"
             }
         ]
@@ -46,12 +46,12 @@ class TestOSV:
         assert osv.absolute_orbit.text == parameters["absolute_orbit"].text
         for attr in ("x", "y", "z"):
             value = getattr(osv, attr)
-            assert isinstance(value, basic.PositionComponentType)
+            assert isinstance(value, basic.PositionComponent)
             assert value.text == parameters[attr].text
             assert value.unit == parameters[attr].unit
         for attr in ("vx", "vy", "vz"):
             value = getattr(osv, attr)
-            assert isinstance(value, basic.VelocityComponentType)
+            assert isinstance(value, basic.VelocityComponent)
             assert value.text == parameters[attr].text
             assert value.unit == parameters[attr].unit
         assert isinstance(osv.quality, str)
@@ -67,12 +67,12 @@ class TestOSV:
                     "utc": "UTC=2014-06-11T10:51:15.855382",
                     "ut1": "UT1=2014-06-11T10:51:16.155381",
                     "absolute_orbit": orbits.AbsoluteOrbit.from_int(0),
-                    "x": basic.PositionComponentType.from_float(-2025630.454),
-                    "y": basic.PositionComponentType.from_float(6765565.948),
-                    "z": basic.PositionComponentType.from_float(0445518.75),
-                    "vx": basic.VelocityComponentType.from_float(1655.255131),
-                    "vy": basic.VelocityComponentType.from_float(-2.394418),
-                    "vz": basic.VelocityComponentType.from_float(7415.236254),
+                    "x": basic.PositionComponent.from_float(-2025630.454),
+                    "y": basic.PositionComponent.from_float(6765565.948),
+                    "z": basic.PositionComponent.from_float(0445518.75),
+                    "vx": basic.VelocityComponent.from_float(1655.255131),
+                    "vy": basic.VelocityComponent.from_float(-2.394418),
+                    "vz": basic.VelocityComponent.from_float(7415.236254),
                     "quality": "0000000000000"
                 },
                 dict(
@@ -110,12 +110,12 @@ class TestListOfOSVs:
                         utc="UTC=2014-06-11T10:51:15.855382",
                         ut1="UT1=2014-06-11T10:51:16.155381",
                         absolute_orbit=orbits.AbsoluteOrbit.from_int(0),
-                        x=basic.PositionComponentType.from_float(-2025630.454),
-                        y=basic.PositionComponentType.from_float(6765565.948),
-                        z=basic.PositionComponentType.from_float(0445518.75),
-                        vx=basic.VelocityComponentType.from_float(1655.255131),
-                        vy=basic.VelocityComponentType.from_float(-2.394418),
-                        vz=basic.VelocityComponentType.from_float(7415.236254),
+                        x=basic.PositionComponent.from_float(-2025630.454),
+                        y=basic.PositionComponent.from_float(6765565.948),
+                        z=basic.PositionComponent.from_float(0445518.75),
+                        vx=basic.VelocityComponent.from_float(1655.255131),
+                        vy=basic.VelocityComponent.from_float(-2.394418),
+                        vz=basic.VelocityComponent.from_float(7415.236254),
                         quality="0000000000000"
                     )
                 ],
