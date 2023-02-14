@@ -161,12 +161,12 @@ class OSV:
             "utc": datetime.strptime(self.utc[4:], "%Y-%m-%dT%H:%M:%S.%f"),
             "ut1": datetime.strptime(self.ut1[4:], "%Y-%m-%dT%H:%M:%S.%f"),
             "absolute_orbit": self.absolute_orbit.to_int(),
-            "x": self.x.to_float(),
-            "y": self.y.to_float(),
-            "z": self.z.to_float(),
-            "vx": self.vx.to_float(),
-            "vy": self.vy.to_float(),
-            "vz": self.vz.to_float(),
+            "x": self.x.value,
+            "y": self.y.value,
+            "z": self.z.value,
+            "vx": self.vx.value,
+            "vy": self.vy.value,
+            "vz": self.vz.value,
             "quality": self.quality
         }
 

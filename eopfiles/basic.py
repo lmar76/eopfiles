@@ -7,6 +7,8 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Any, Optional
 
+from xsdata.formats.converter import Converter, converter
+
 
 # ===============================================
 # Namespace and schema files
@@ -85,6 +87,30 @@ class AnyTypeType:
             "mixed": True,
         }
     )
+
+
+# ===============================================
+# Floating types
+# ===============================================
+
+
+class FloatingFmtValue(float):
+    pass
+
+
+class FloatingFmtValueConverter(Converter):
+    """Converter for `FloatingFmtValue` class."""
+
+    def deserialize(self, value: str, **kwargs: Any) -> FloatingFmtValue:
+        return FloatingFmtValue(value)
+
+    def serialize(self, value: FloatingFmtValue, **kwargs: Any) -> str:
+        if kwargs.get("format"):
+            return kwargs["format"].format(value)
+        return str(value)
+
+
+converter.register_converter(FloatingFmtValue, FloatingFmtValueConverter())
 
 
 # ===============================================
@@ -185,10 +211,10 @@ class PositionComponent:
     class Meta:
         name = "Position_Component"
 
-    text: str = field(
+    value: FloatingFmtValue = field(
         metadata={
             "required": True,
-            "pattern": r"[+-]\d{7}\.\d{3}"
+            "format": "+012.3f"
         }
     )
     unit: str = field(
@@ -198,15 +224,6 @@ class PositionComponent:
             "required": True,
         }
     )
-
-    @classmethod
-    def from_float(cls, value: float) -> PositionComponent:
-        """Alternative to constructor in case of `float` values."""
-        return cls(f"{value:+012.3f}")
-
-    def to_float(self) -> float:
-        """Convert `text` to `float`."""
-        return float(self.text)
 
 
 # ===============================================
@@ -219,10 +236,10 @@ class VelocityComponent:
     class Meta:
         name = "Velocity_Component"
 
-    text: str = field(
+    value: FloatingFmtValue = field(
         metadata={
             "required": True,
-            "pattern": r"[+-]\d{7}\.\d{6}"
+            "format": "+012.6f"
         }
     )
     unit: str = field(
@@ -232,12 +249,3 @@ class VelocityComponent:
             "required": True,
         }
     )
-
-    @classmethod
-    def from_float(cls, value: float) -> VelocityComponent:
-        """Alternative to constructor in case of `float` values."""
-        return cls(f"{value:+012.6f}")
-
-    def to_float(self) -> float:
-        """Convert `text` to float."""
-        return float(self.text)
