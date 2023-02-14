@@ -310,4 +310,3 @@ class EOOrbitStateVectorFile(EORestitutedOrbitFile):
     class Meta:
         name = "Earth_Observation_File"
         namespace = basic.__NAMESPACE__
-
