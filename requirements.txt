@@ -12,11 +12,13 @@ packaging
 pip
 pyproject_hooks
 pytest
+pytest-cov
 pytest-datadir
 pytest-dotenv
 setuptools
 tomli
 toposort
+tox
 untokenize
 wheel
 xsdata

@@ -1,6 +1,4 @@
 """Time-related types and global variables."""
-from __future__ import annotations
-
 from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Optional

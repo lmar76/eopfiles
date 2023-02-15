@@ -1,10 +1,8 @@
 """Orbit types."""
-from __future__ import annotations
-
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Any, Optional
+from typing import Any, Dict, List, Optional
 
 from . import basic, times
 
@@ -141,12 +139,12 @@ class OSV:
         }
     )
 
-    def to_dict(self) -> dict[str, Any]:
+    def to_dict(self) -> Dict[str, Any]:
         """Convert `OSV` to dict.
 
         Returns
         -------
-        dict[str, Any]
+        Dict[str, Any]
             `OSV` information.
 
         """
@@ -170,7 +168,7 @@ class ListOfOSVs:
     class Meta:
         name = "List_of_OSVs"
 
-    osvs: list[OSV] = field(
+    osvs: List[OSV] = field(
         default_factory=list,
         metadata={
             "name": "OSV",

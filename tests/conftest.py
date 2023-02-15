@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import os
 import pathlib
 import shutil
@@ -30,7 +31,7 @@ class SamplesDir:
             else:
                 return shutil.copy2(_file, self._outdir)
 
-    def write(self, text: str, filename: Optional[str] = "output"):
+    def write(self, text: str, filename: Optional[str] = "output") -> None:
         if self._outdir is None:
             return None
         else:
@@ -39,5 +40,5 @@ class SamplesDir:
 
 
 @pytest.fixture(scope="module")
-def samplesdir(request):
+def samplesdir(request) -> SamplesDir:
     return SamplesDir(SAMPLES_BASE, Path(request.fspath).stem)

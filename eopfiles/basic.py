@@ -1,11 +1,10 @@
 """Basic types and global variables."""
-from __future__ import annotations
 
 __NAMESPACE__ = "http://eop-cfi.esa.int/CFI"
 
 from dataclasses import dataclass, field
 from decimal import Decimal
-from typing import Any, Optional
+from typing import Any, List, Optional
 
 from xsdata.formats.converter import Converter, ConverterError, converter
 
@@ -79,7 +78,7 @@ class AnyTypeType:
     class Meta:
         name = "AnyType_Type"
 
-    content: list[Any] = field(
+    content: List[Any] = field(
         default_factory=list,
         metadata={
             "type": "Wildcard",
