@@ -44,31 +44,34 @@ class OSV:
     class Meta:
         name = "OSV"
 
-    tai: str = field(
+    tai: datetime = field(
         metadata={
             "name": "TAI",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
             "pattern": times.TAI_DATE_TIME_PATTERN,
+            "format": "TAI=%Y-%m-%dT%H:%M:%S.%f"
         }
     )
-    utc: str = field(
+    utc: datetime = field(
         metadata={
             "name": "UTC",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
             "pattern": times.UTC_DATE_TIME_PATTERN,
+            "format": "UTC=%Y-%m-%dT%H:%M:%S.%f"
         }
     )
-    ut1: str = field(
+    ut1: datetime = field(
         metadata={
             "name": "UT1",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
             "pattern": times.UT1_DATE_TIME_PATTERN,
+            "format": "UT1=%Y-%m-%dT%H:%M:%S.%f"
         }
     )
     absolute_orbit: AbsoluteOrbit = field(
@@ -148,9 +151,9 @@ class OSV:
 
         """
         return {
-            "tai": datetime.strptime(self.tai[4:], "%Y-%m-%dT%H:%M:%S.%f"),
-            "utc": datetime.strptime(self.utc[4:], "%Y-%m-%dT%H:%M:%S.%f"),
-            "ut1": datetime.strptime(self.ut1[4:], "%Y-%m-%dT%H:%M:%S.%f"),
+            "tai": self.tai,
+            "utc": self.utc,
+            "ut1": self.ut1,
             "absolute_orbit": self.absolute_orbit.value,
             "x": self.x.value,
             "y": self.y.value,

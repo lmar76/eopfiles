@@ -15,9 +15,9 @@ class TestOSV:
         "parameters",
         [
             {
-                "tai": "TAI=2014-06-11T10:50:40.855382",
-                "utc": "UTC=2014-06-11T10:51:15.855382",
-                "ut1": "UT1=2014-06-11T10:51:16.155381",
+                "tai": datetime(2014, 6, 11, 10, 50, 40, 855382),
+                "utc": datetime(2014, 6, 11, 10, 51, 15, 855382),
+                "ut1": datetime(2014, 6, 11, 10, 51, 15, 155381),
                 "absolute_orbit": orbits.AbsoluteOrbit(basic.IntFmtValue(0)),
                 "x": basic.PositionComponent(basic.FloatingFmtValue(-2025630.454)),
                 "y": basic.PositionComponent(basic.FloatingFmtValue(6765565.948)),
@@ -40,7 +40,7 @@ class TestOSV:
                 "x", "y", "z", "vx", "vy", "vz", "quality"]
         )
         for attr in ("tai", "utc", "utc"):
-            assert isinstance(getattr(osv, attr), str)
+            assert isinstance(getattr(osv, attr), datetime)
             assert getattr(osv, attr) == parameters[attr]
         assert isinstance(osv.absolute_orbit, orbits.AbsoluteOrbit)
         assert isinstance(osv.absolute_orbit.value, basic.IntFmtValue)
@@ -64,9 +64,9 @@ class TestOSV:
         [
             (
                 {
-                    "tai": "TAI=2014-06-11T10:50:40.855382",
-                    "utc": "UTC=2014-06-11T10:51:15.855382",
-                    "ut1": "UT1=2014-06-11T10:51:16.155381",
+                    "tai": datetime(2014, 6, 11, 10, 50, 40, 855382),
+                    "utc": datetime(2014, 6, 11, 10, 51, 15, 855382),
+                    "ut1": datetime(2014, 6, 11, 10, 51, 15, 155381),
                     "absolute_orbit": orbits.AbsoluteOrbit(basic.IntFmtValue(0)),
                     "x": basic.PositionComponent(basic.FloatingFmtValue(-2025630.454)),
                     "y": basic.PositionComponent(basic.FloatingFmtValue(6765565.948)),
@@ -79,7 +79,7 @@ class TestOSV:
                 dict(
                     tai=datetime(2014, 6, 11, 10, 50, 40, 855382),
                     utc=datetime(2014, 6, 11, 10, 51, 15, 855382),
-                    ut1=datetime(2014, 6, 11, 10, 51, 16, 155381),
+                    ut1=datetime(2014, 6, 11, 10, 51, 15, 155381),
                     absolute_orbit=0,
                     x=-2025630.454,
                     y=+6765565.948,
@@ -107,9 +107,9 @@ class TestListOfOSVs:
             {
                 "osvs": [
                     orbits.OSV(
-                        tai="TAI=2014-06-11T10:50:40.855382",
-                        utc="UTC=2014-06-11T10:51:15.855382",
-                        ut1="UT1=2014-06-11T10:51:16.155381",
+                        tai=datetime(2014, 6, 11, 10, 50, 40, 855382),
+                        utc=datetime(2014, 6, 11, 10, 51, 15, 855382),
+                        ut1=datetime(2014, 6, 11, 10, 51, 15, 155381),
                         absolute_orbit=orbits.AbsoluteOrbit(basic.IntFmtValue(0)),
                         x=basic.PositionComponent(basic.FloatingFmtValue(-2025630.454)),
                         y=basic.PositionComponent(basic.FloatingFmtValue(6765565.948)),
