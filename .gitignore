@@ -139,4 +139,4 @@ dmypy.json
 *.ipynb
 
 # Samples
-tests/samples/
+samples/
