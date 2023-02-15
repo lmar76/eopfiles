@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=56.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eopfiles"
+authors = [
+    {name = "Luca Mariani", email = "lmar76@gmail.com"}
+]
+description = "EOP Mission Files read/write tools"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11"
+]
+dependencies = [
+    "xsdata"
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov", "pytest-datadir", "pytest-dotenv", "tox"]
+
+[project.urls]
+repository = "https://github.com/lmar76/eopfiles"
+
+[tool.setuptools.dynamic]
+version = {attr = "eopfiles.__version__"}
