@@ -1,5 +1,6 @@
 """Header types."""
 from dataclasses import dataclass, field
+from datetime import datetime
 from typing import Optional
 
 from . import basic, times
@@ -10,26 +11,26 @@ class ValidityPeriod:
     class Meta:
         name = "Validity_Period"
 
-    validity_start: Optional[str] = field(
-        default=None,
+    validity_start: datetime = field(
         metadata={
             "name": "Validity_Start",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
             "length": 23,
-            "pattern": times.UTC_DATE_TIME_PATTERN,
+            "pattern": times.VALIDITY_DATE_TIME_PATTERN,
+            "format": "UTC=%Y-%m-%dT%H:%M:%S"
         }
     )
-    validity_stop: Optional[str] = field(
-        default=None,
+    validity_stop: datetime = field(
         metadata={
             "name": "Validity_Stop",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
             "length": 23,
-            "pattern": times.UTC_DATE_TIME_PATTERN,
+            "pattern": times.VALIDITY_DATE_TIME_PATTERN,
+            "format": "UTC=%Y-%m-%dT%H:%M:%S"
         }
     )
 
