@@ -3,8 +3,9 @@
 ## [0.2] - 2023-02-16
 
 ### Changed
-- Changed `validity_start` and `validity_stop` type from `Optional[str]` to
-  `datetime.datetime`.
+- Date time patterns in `eopfiles.time`.
+- `ValidityPeriod.validity_start` and `ValidityPeriod.validity_stop` types from
+  `Optional[str]` to `str`.
 
 ## [0.1] - 2023-02-15
 
