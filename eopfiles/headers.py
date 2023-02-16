@@ -10,26 +10,24 @@ class ValidityPeriod:
     class Meta:
         name = "Validity_Period"
 
-    validity_start: Optional[str] = field(
-        default=None,
+    validity_start: str = field(
         metadata={
             "name": "Validity_Start",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
             "length": 23,
-            "pattern": times.UTC_DATE_TIME_PATTERN,
+            "pattern": times.VALIDITY_START_DATE_TIME_PATTERN,
         }
     )
-    validity_stop: Optional[str] = field(
-        default=None,
+    validity_stop: str = field(
         metadata={
             "name": "Validity_Stop",
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
             "length": 23,
-            "pattern": times.UTC_DATE_TIME_PATTERN,
+            "pattern": times.VALIDITY_STOP_DATE_TIME_PATTERN,
         }
     )
 
