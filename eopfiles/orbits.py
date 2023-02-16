@@ -48,7 +48,7 @@ class OSV:
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
-            "pattern": times.TAI_DATE_TIME_PATTERN,
+            "pattern": times.TAI_DATE_TIME_PATTERN_FSEC,
             "format": "TAI=%Y-%m-%dT%H:%M:%S.%f"
         }
     )
@@ -58,7 +58,7 @@ class OSV:
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
-            "pattern": times.UTC_DATE_TIME_PATTERN,
+            "pattern": times.UTC_DATE_TIME_PATTERN_FSEC,
             "format": "UTC=%Y-%m-%dT%H:%M:%S.%f"
         }
     )
@@ -68,7 +68,7 @@ class OSV:
             "type": "Element",
             "namespace": basic.__NAMESPACE__,
             "required": True,
-            "pattern": times.UT1_DATE_TIME_PATTERN,
+            "pattern": times.UT1_DATE_TIME_PATTERN_FSEC,
             "format": "UT1=%Y-%m-%dT%H:%M:%S.%f"
         }
     )
