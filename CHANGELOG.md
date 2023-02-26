@@ -1,6 +1,11 @@
 # Changelog
 
-## [0.2] - 2023-02-36
+## [0.3] - 2023-02-26
+
+### Added
+- Added `py.typed`.
+
+## [0.2] - 2023-02-26
 
 ### Changed
 - Date time patterns in `eopfiles.time`.

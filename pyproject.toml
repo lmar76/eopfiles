@@ -31,3 +31,6 @@ repository = "https://github.com/lmar76/eopfiles"
 
 [tool.setuptools.dynamic]
 version = {attr = "eopfiles.__version__"}
+
+[tool.setuptools.package-data]
+eopfiles = ["py.typed"]
