@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.2] - 2023-02-36
 
 ### Changed
 - Date time patterns in `eopfiles.time`.
