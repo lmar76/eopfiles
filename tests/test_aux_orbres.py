@@ -1,11 +1,7 @@
 """Test the `eopfiles.aux_orbres` module."""
 import pytest
-from xsdata.formats.dataclass.context import XmlContext
-from xsdata.formats.dataclass.parsers import XmlParser
-from xsdata.formats.dataclass.serializers import XmlSerializer
-from xsdata.formats.dataclass.serializers.config import SerializerConfig
 
-from eopfiles import basic, aux_orbres
+from eopfiles import basic, aux_orbres, get_parser, get_serializer
 
 
 class TestRestitutedOrbitFile:
@@ -34,7 +30,7 @@ class TestRestitutedOrbitFile:
     def test_from_file(self, samplesdir, datadir, filename, ffs):
         """Test instance creation from XML file."""
         file = datadir / filename
-        parser = XmlParser(context=XmlContext())
+        parser = get_parser()
         if ffs == "FFS1":
             restituted_orbit_file = parser.parse(file, aux_orbres.EERestitutedOrbitFileFFS1)
             assert isinstance(restituted_orbit_file, aux_orbres.EERestitutedOrbitFileFFS1)
@@ -44,7 +40,7 @@ class TestRestitutedOrbitFile:
         else:
             restituted_orbit_file = parser.parse(file, aux_orbres.EORestitutedOrbitFile)
             assert isinstance(restituted_orbit_file, aux_orbres.EORestitutedOrbitFile)
-        serializer = XmlSerializer(config=SerializerConfig(pretty_print=True))
+        serializer = get_serializer()
         nsmap = {None: basic.__NAMESPACE__}
         samplesdir.write(serializer.render(restituted_orbit_file, nsmap), filename)
 
@@ -75,7 +71,7 @@ class TestOrbitStateVectorFileFile:
     def test_from_file(self, samplesdir, datadir, filename, ffs):
         """Test instance creation from XML file."""
         file = datadir / filename
-        parser = XmlParser(context=XmlContext())
+        parser = get_parser()
         if ffs == "FFS1":
             restituted_orbit_file = parser.parse(file, aux_orbres.EEOrbitStateVectorFileFFS1)
             assert isinstance(restituted_orbit_file, aux_orbres.EEOrbitStateVectorFileFFS1)
@@ -85,6 +81,6 @@ class TestOrbitStateVectorFileFile:
         else:
             restituted_orbit_file = parser.parse(file, aux_orbres.EOOrbitStateVectorFile)
             assert isinstance(restituted_orbit_file, aux_orbres.EOOrbitStateVectorFile)
-        serializer = XmlSerializer(config=SerializerConfig(pretty_print=True))
+        serializer = get_serializer()
         nsmap = {None: basic.__NAMESPACE__}
         samplesdir.write(serializer.render(restituted_orbit_file, nsmap), filename)

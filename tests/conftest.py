@@ -8,7 +8,7 @@ from typing import Optional
 
 import pytest
 
-SAMPLES_BASE = os.getenv("SAMPLES_BASE")
+SAMPLES_BASE = os.getenv("SAMPLES_BASE", ".")
 
 
 class SamplesDir:
@@ -31,7 +31,7 @@ class SamplesDir:
             else:
                 return shutil.copy2(_file, self._outdir)
 
-    def write(self, text: str, filename: Optional[str] = "output") -> None:
+    def write(self, text: str, filename: str = "output") -> None:
         if self._outdir is None:
             return None
         else:
