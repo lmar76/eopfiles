@@ -1,11 +1,7 @@
 """Test the `eopfiles.mpl_orbpre` module."""
 import pytest
-from xsdata.formats.dataclass.context import XmlContext
-from xsdata.formats.dataclass.parsers import XmlParser
-from xsdata.formats.dataclass.serializers import XmlSerializer
-from xsdata.formats.dataclass.serializers.config import SerializerConfig
 
-from eopfiles import basic, mpl_orbpre
+from eopfiles import basic, mpl_orbpre, get_parser, get_serializer
 
 
 class TestEEPredictedOrbitFile:
@@ -31,7 +27,7 @@ class TestEEPredictedOrbitFile:
     def test_from_file(self, samplesdir, datadir, filename, ffs):
         """Test instance creation from XML file."""
         file = datadir / filename
-        parser = XmlParser(context=XmlContext())
+        parser = get_parser()
         if ffs == "FFS1":
             predicted_orbit_file = parser.parse(file, mpl_orbpre.EEPredictedOrbitFileFFS1)
             assert isinstance(predicted_orbit_file, mpl_orbpre.EEPredictedOrbitFileFFS1)
@@ -41,6 +37,6 @@ class TestEEPredictedOrbitFile:
         else:
             predicted_orbit_file = parser.parse(file, mpl_orbpre.EOPredictedOrbitFile)
             assert isinstance(predicted_orbit_file, mpl_orbpre.EOPredictedOrbitFile)
-        serializer = XmlSerializer(config=SerializerConfig(pretty_print=True))
+        serializer = get_serializer()
         nsmap = {None: basic.__NAMESPACE__}
         samplesdir.write(serializer.render(predicted_orbit_file, nsmap), filename)
