@@ -7,7 +7,7 @@ __all__ = [
     "mpl_orbpre",
     "times",
 ]
-__version__ = "0.3"
+__version__ = "0.4"
 
 from xsdata.formats.dataclass.context import XmlContext
 from xsdata.formats.dataclass.parsers import XmlParser

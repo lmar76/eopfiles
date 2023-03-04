@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.4] - 2023-03-04
+
+### Added
+- `get_parser` and `get_serializer` functions.
+
 ## [0.3] - 2023-02-26
 
 ### Added
