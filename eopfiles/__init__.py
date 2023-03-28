@@ -1,6 +1,7 @@
 __all__ = [
     "aux_orbres",
     "basic",
+    "exceptions",
     "get_parser",
     "get_serializer",
     "headers",
@@ -17,6 +18,7 @@ from xsdata.formats.dataclass.serializers.config import SerializerConfig
 from . import (
     aux_orbres,
     basic,
+    exceptions,
     headers,
     mpl_orbpre,
     times

@@ -2,9 +2,14 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 
 from . import basic, times
+from .exceptions import PositionComponentUnitError, VelocityComponentUnitError
+
+
+POSITION_COMPONENT_UNIT = "m"
+VELOCITY_COMPONENT_UNIT = "m/s"
 
 
 class RefFrame(Enum):
@@ -24,6 +29,60 @@ class TimeReference(Enum):
     TAI = "TAI"
     UTC = "UTC"
     UT1 = "UT1"
+
+
+@dataclass
+class PositionComponent:
+    class Meta:
+        name = "Position_Component"
+
+    value: basic.FloatingFmtValue = field(
+        metadata={
+            "required": True,
+            "format": "{:+012.3f}"
+        }
+    )
+    unit: str = field(
+        default=POSITION_COMPONENT_UNIT,
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )
+
+    def valid_unit(self) -> bool:
+        return self.unit == POSITION_COMPONENT_UNIT
+
+    def validate_unit(self) -> None:
+        if not self.valid_unit():
+            raise PositionComponentUnitError(f"Wrong unit '{self.unit}'")
+
+
+@dataclass
+class VelocityComponent:
+    class Meta:
+        name = "Velocity_Component"
+
+    value: basic.FloatingFmtValue = field(
+        metadata={
+            "required": True,
+            "format": "{:+012.6f}"
+        }
+    )
+    unit: str = field(
+        default=VELOCITY_COMPONENT_UNIT,
+        metadata={
+            "type": "Attribute",
+            "required": True,
+        }
+    )
+
+    def valid_unit(self) -> bool:
+        return self.unit == VELOCITY_COMPONENT_UNIT
+
+    def validate_unit(self) -> None:
+        if not self.valid_unit():
+            raise VelocityComponentUnitError(f"Wrong unit '{self.unit}'")
 
 
 @dataclass
@@ -80,7 +139,7 @@ class OSV:
             "required": True,
         }
     )
-    x: basic.PositionComponent = field(
+    x: PositionComponent = field(
         metadata={
             "name": "X",
             "type": "Element",
@@ -88,7 +147,7 @@ class OSV:
             "required": True,
         }
     )
-    y: basic.PositionComponent = field(
+    y: PositionComponent = field(
         metadata={
             "name": "Y",
             "type": "Element",
@@ -96,7 +155,7 @@ class OSV:
             "required": True,
         }
     )
-    z: basic.PositionComponent = field(
+    z: PositionComponent = field(
         metadata={
             "name": "Z",
             "type": "Element",
@@ -104,7 +163,7 @@ class OSV:
             "required": True,
         }
     )
-    vx: basic.VelocityComponent = field(
+    vx: VelocityComponent = field(
         metadata={
             "name": "VX",
             "type": "Element",
@@ -112,7 +171,7 @@ class OSV:
             "required": True,
         }
     )
-    vy: basic.VelocityComponent = field(
+    vy: VelocityComponent = field(
         metadata={
             "name": "VY",
             "type": "Element",
@@ -120,7 +179,7 @@ class OSV:
             "required": True,
         }
     )
-    vz: basic.VelocityComponent = field(
+    vz: VelocityComponent = field(
         metadata={
             "name": "VZ",
             "type": "Element",
@@ -138,29 +197,6 @@ class OSV:
             "pattern": r"0{13}"
         }
     )
-
-    def to_dict(self) -> Dict[str, Any]:
-        """Convert `OSV` to dict.
-
-        Returns
-        -------
-        Dict[str, Any]
-            `OSV` information.
-
-        """
-        return {
-            "tai": self.tai,
-            "utc": self.utc,
-            "ut1": self.ut1,
-            "absolute_orbit": self.absolute_orbit.value,
-            "x": self.x.value,
-            "y": self.y.value,
-            "z": self.z.value,
-            "vx": self.vx.value,
-            "vy": self.vy.value,
-            "vz": self.vz.value,
-            "quality": self.quality
-        }
 
 
 @dataclass
