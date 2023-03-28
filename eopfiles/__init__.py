@@ -1,13 +1,14 @@
 __all__ = [
     "aux_orbres",
     "basic",
+    "exceptions",
     "get_parser",
     "get_serializer",
     "headers",
     "mpl_orbpre",
     "times",
 ]
-__version__ = "0.4"
+__version__ = "0.5"
 
 from xsdata.formats.dataclass.context import XmlContext
 from xsdata.formats.dataclass.parsers import XmlParser
@@ -17,6 +18,7 @@ from xsdata.formats.dataclass.serializers.config import SerializerConfig
 from . import (
     aux_orbres,
     basic,
+    exceptions,
     headers,
     mpl_orbpre,
     times
