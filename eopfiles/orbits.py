@@ -4,6 +4,8 @@ from datetime import datetime
 from enum import Enum
 from typing import List, Optional
 
+import pandas
+
 from . import basic, times
 from .exceptions import PositionComponentUnitError, VelocityComponentUnitError
 
@@ -220,3 +222,30 @@ class ListOfOSVs:
             "required": True,
         }
     )
+
+    def to_dataframe(self) -> pandas.DataFrame:
+        """Convert list of Orbit State Vectors to `pandas.DataFrame`.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Orbit State Vectors.
+
+        """
+        return pandas.DataFrame(
+            [
+                {
+                    "tai": osv.tai,
+                    "ut1": osv.ut1,
+                    "utc": osv.utc,
+                    "absolute_orbit": osv.absolute_orbit,
+                    "x": osv.x.value,
+                    "y": osv.y.value,
+                    "z": osv.z.value,
+                    "vx": osv.vx.value,
+                    "vy": osv.vy.value,
+                    "vz": osv.vz.value
+                }
+                for osv in self.osvs
+            ]
+        )

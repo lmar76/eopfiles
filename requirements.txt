@@ -9,6 +9,8 @@ lxml
 MarkupSafe
 mypy
 packaging
+pandas
+pandas.stubs
 pip
 pyproject_hooks
 pytest
