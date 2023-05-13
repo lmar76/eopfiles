@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.7] - 2023-05-13
+
+### Changed
+- `orbits.ListOfOSVs.to_dataframe` method: changed type of `absolute_orbit`
+  column from `orbits.AbsoluteOrbit` to integer.
+
+## [0.6] - 2023-03-30
+
+### Added
+- `orbits.ListOfOSVs.to_dataframe` method
+
+## [0.5] - 2023-03-28
+
+### Added
+- `exceptions` module.
+
+### Changed
+- Move `PositionComponent` and `VelocityComponent` from `basic` to `orbits`.
+
 ## [0.4] - 2023-03-04
 
 ### Added
