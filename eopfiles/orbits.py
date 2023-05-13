@@ -238,7 +238,7 @@ class ListOfOSVs:
                     "tai": osv.tai,
                     "ut1": osv.ut1,
                     "utc": osv.utc,
-                    "absolute_orbit": osv.absolute_orbit,
+                    "absolute_orbit": osv.absolute_orbit.value,
                     "x": osv.x.value,
                     "y": osv.y.value,
                     "z": osv.z.value,

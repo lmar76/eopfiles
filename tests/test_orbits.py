@@ -270,9 +270,9 @@ class TestListOfOSVs:
         assert isinstance(df, pandas.DataFrame)
         assert df.shape[0] == len(parameters["osvs"])
         assert df.shape[0] == parameters["count"]
-        for param in ("tai", "ut1", "utc", "absolute_orbit"):
+        for param in ("tai", "ut1", "utc"):
             assert param in df
             assert df[param].to_list() == [getattr(osv, param) for osv in parameters["osvs"]]
-        for param in ("x", "y", "z", "vx", "vy", "vz"):
+        for param in ("absolute_orbit", "x", "y", "z", "vx", "vy", "vz"):
             assert param in df
             assert df[param].to_list() == [getattr(osv, param).value for osv in parameters["osvs"]]
